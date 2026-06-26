@@ -300,6 +300,7 @@ section {
     gap: 25px;
 }
 
+/* ===== Карточки разделов (ИСПРАВЛЕННАЯ ВЕРСИЯ) ===== */
 .fun-card {
     position: relative;
     background: var(--bg-card);
@@ -311,6 +312,8 @@ section {
     border: 2px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     display: block;
+    z-index: 1; /* Создаем контекст, чтобы фон ушел под карточку */
+    pointer-events: auto !important; /* Жестко разрешаем клики */
 }
 
 .fun-card::before {
@@ -323,14 +326,16 @@ section {
     background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05));
     opacity: 0;
     transition: var(--transition);
+    pointer-events: none !important; /* Игнорируем клики */
+    z-index: -1; /* 🔥 ГЛАВНАЯ ФИШКА: Убираем фон ПОД контент карточки */
 }
-/* ===== Исправление для кликов ===== */
-.fun-card::before,
-.fun-card::after {
-    pointer-events: none !important; /* ← ДОБАВЬТЕ ЭТО */
-}
-.fun-card::before {
-    pointer-events: none !important; /* ← ДОБАВЬТЕ ЭТУ СТРОКУ */
+
+/* Отключаем клики для внутренних декоративных элементов, 
+   чтобы они не перекрывали ссылку */
+.featured-badge,
+.card-arrow,
+.card-sparkles {
+    pointer-events: none !important;
 }
 .fun-card {
     pointer-events: auto !important;
