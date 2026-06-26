@@ -324,7 +324,23 @@ section {
     opacity: 0;
     transition: var(--transition);
 }
+/* ===== Исправление для кликов ===== */
+.fun-card::before,
+.fun-card::after {
+    pointer-events: none !important; /* ← ДОБАВЬТЕ ЭТО */
+}
+.fun-card::before {
+    pointer-events: none !important; /* ← ДОБАВЬТЕ ЭТУ СТРОКУ */
+}
+.fun-card {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1;
+}
 
+.fun-card * {
+    pointer-events: auto;
+}
 .fun-card:hover {
     transform: translateY(-10px) rotate(-1deg);
     border-color: var(--primary-color, var(--purple));
