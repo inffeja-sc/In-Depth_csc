@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="numeracy_title">🔢 Системы счисления — Учебный курс</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
     <div class="float-item" style="--x: 35%; --delay: 1s;">📐</div>
     <div class="float-item" style="--x: 45%; --delay: 3s;">🔄</div>
     <div class="float-item" style="--x: 55%; --delay: 5s;">✨</div>
-    <div class="float-item" style="--x: 65%; --delay: 2.5s;">🎯</div>
+    <div class="float-item" style="--x: 65%; --delay: 2.5s;"></div>
     <div class="float-item" style="--x: 75%; --delay: 0.5s;">📊</div>
     <div class="float-item" style="--x: 85%; --delay: 3.5s;">🔣</div>
     <div class="float-item" style="--x: 95%; --delay: 1.5s;"></div>
@@ -47,8 +47,11 @@
 <!-- Hero -->
 <section class="hero">
     <div class="container">
-        <h1 data-i18n="hero_title">🔢 Системы счисления</h1>
-        <p class="subtitle" data-i18n="hero_subtitle">Полный учебный курс по теории и практике перевода чисел между системами счисления</p>
+        <div class="hero-badge" data-i18n="hero_badge"> Учебный курс</div>
+        <h1 class="hero-title" data-i18n="numeracy_title">🔢 Системы счисления</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+            Полный учебный курс по теории и практике перевода чисел между системами счисления
+        </p>
         
         <div class="hero-stats">
             <div class="stat">
@@ -74,85 +77,121 @@
 <!-- Main Content -->
 <main>
     <div class="container">
+        <!-- О курсе -->
         <div class="intro">
             <h2 data-i18n="about_title">О курсе</h2>
-            <p data-i18n="about_text">Этот сайт представляет собой полное учебное пособие по позиционным системам счисления. Вы изучите теорию, алгоритмы перевода, схему Горнера, работу с дробными и периодическими числами, а также смешанные системы счисления.</p>
+            <p data-i18n="about_text">
+                Этот сайт представляет собой полное учебное пособие по позиционным системам счисления. 
+                Вы изучите теорию, алгоритмы перевода, схему Горнера, работу с дробными и периодическими 
+                числами, а также смешанные системы счисления.
+            </p>
         </div>
 
-        <section id="topics" class="topics-grid">
-            <h2 data-i18n="topics_title">📚 Темы курса</h2>
-            <div class="grid">
-                <a href="positional.html" class="topic-card">
-                    <div class="card-icon">📐</div>
-                    <h3 data-i18n="topic1_title">Позиционные СС</h3>
-                    <p data-i18n="topic1_desc">Основные понятия, алфавит, основание, разряды, развернутая форма и схема Горнера</p>
+        <!-- Темы курса -->
+        <section id="topics">
+            <h2 class="section-title">
+                <span data-i18n="topics_title"> Темы курса</span>
+            </h2>
+            <div class="cards-grid">
+                <a href="positional.html" class="fun-card card-games">
+                    <div class="card-emoji">📐</div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic1_title">Позиционные СС</h3>
+                        <p data-i18n="topic1_desc">Основные понятия, алфавит, основание, разряды, развернутая форма и схема Горнера</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="integers.html" class="topic-card">
-                    <div class="card-icon">🔢</div>
-                    <h3 data-i18n="topic2_title">Целые числа</h3>
-                    <p data-i18n="topic2_desc">Перевод целых чисел между системами счисления, алгоритмы деления и умножения</p>
+                <a href="integers.html" class="fun-card card-course">
+                    <div class="card-emoji"></div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic2_title">Целые числа</h3>
+                        <p data-i18n="topic2_desc">Перевод целых чисел между системами счисления, алгоритмы деления и умножения</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="fractions.html" class="topic-card">
-                    <div class="card-icon">🧮</div>
-                    <h3 data-i18n="topic3_title">Дробные числа</h3>
-                    <p data-i18n="topic3_desc">Перевод конечных P-ичных дробей, два способа вычисления, таблица умножения</p>
+                <a href="fractions.html" class="fun-card card-trainers">
+                    <div class="card-emoji">🧮</div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic3_title">Дробные числа</h3>
+                        <p data-i18n="topic3_desc">Перевод конечных P-ичных дробей, два способа вычисления, таблица умножения</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="periodic.html" class="topic-card">
-                    <div class="card-icon">🔄</div>
-                    <h3 data-i18n="topic4_title">Периодические дроби</h3>
-                    <p data-i18n="topic4_desc">Бесконечные периодические дроби, геометрическая прогрессия, два метода перевода</p>
+                <a href="periodic.html" class="fun-card card-help">
+                    <div class="card-emoji">🔄</div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic4_title">Периодические дроби</h3>
+                        <p data-i18n="topic4_desc">Бесконечные периодические дроби, геометрическая прогрессия, два метода перевода</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="mixed.html" class="topic-card">
-                    <div class="card-icon">🔀</div>
-                    <h3 data-i18n="topic5_title">Смешанные СС</h3>
-                    <p data-i18n="topic5_desc">P-Q-ичные системы, двоично-десятичная, теоремы 2 и 3, группировка цифр</p>
+                <a href="mixed.html" class="fun-card card-games">
+                    <div class="card-emoji">🔀</div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic5_title">Смешанные СС</h3>
+                        <p data-i18n="topic5_desc">P-Q-ичные системы, двоично-десятичная, теоремы 2 и 3, группировка цифр</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="fibonacci.html" class="topic-card">
-                    <div class="card-icon">🌀</div>
-                    <h3 data-i18n="topic6_title">Система Фибоначчи</h3>
-                    <p data-i18n="topic6_desc">Необычная система счисления на основе чисел Фибоначчи, пример 10010_FB</p>
+                <a href="fibonacci.html" class="fun-card card-course">
+                    <div class="card-emoji"></div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic6_title">Система Фибоначчи</h3>
+                        <p data-i18n="topic6_desc">Необычная система счисления на основе чисел Фибоначчи, пример 10010_FB</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="tasks.html" class="topic-card highlight">
-                    <div class="card-icon">✏️</div>
-                    <h3 data-i18n="topic7_title">Задачи и задания</h3>
-                    <p data-i18n="topic7_desc">Более 60 задач разного уровня сложности с подробными решениями</p>
+                <a href="tasks.html" class="fun-card card-trainers featured">
+                    <div class="featured-badge" data-i18n="featured">⭐ Популярное</div>
+                    <div class="card-emoji">✏️</div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic7_title">Задачи и задания</h3>
+                        <p data-i18n="topic7_desc">Более 60 задач разного уровня сложности с подробными решениями</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
 
-                <a href="calculator.html" class="topic-card">
-                    <div class="card-icon">🧰</div>
-                    <h3 data-i18n="topic8_title">Калькулятор</h3>
-                    <p data-i18n="topic8_desc">Интерактивный инструмент для перевода чисел между любыми системами счисления</p>
+                <a href="calculator.html" class="fun-card card-help">
+                    <div class="card-emoji">🧰</div>
+                    <div class="card-content">
+                        <h3 data-i18n="topic8_title">Калькулятор</h3>
+                        <p data-i18n="topic8_desc">Интерактивный инструмент для перевода чисел между любыми системами счисления</p>
+                    </div>
+                    <div class="card-arrow">→</div>
                 </a>
             </div>
         </section>
 
-        <section id="start" class="quick-start">
-            <h2 data-i18n="quickstart_title">🚀 Быстрый старт</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <h3 data-i18n="step1_title">Основы</h3>
+        <!-- Быстрый старт -->
+        <section id="start">
+            <h2 class="section-title">
+                <span data-i18n="quickstart_title">🚀 Быстрый старт</span>
+            </h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">1️⃣</div>
+                    <h4 data-i18n="step1_title">Основы</h4>
                     <p data-i18n="step1_desc">Начните с темы "Позиционные СС" — разберитесь с понятиями разряда и основания</p>
                 </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <h3 data-i18n="step2_title">Практика</h3>
+                <div class="feature">
+                    <div class="feature-icon">2️⃣</div>
+                    <h4 data-i18n="step2_title">Практика</h4>
                     <p data-i18n="step2_desc">Переходите к целым и дробным числам — освойте алгоритмы перевода</p>
                 </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <h3 data-i18n="step3_title">Углубление</h3>
+                <div class="feature">
+                    <div class="feature-icon">3️⃣</div>
+                    <h4 data-i18n="step3_title">Углубление</h4>
                     <p data-i18n="step3_desc">Изучите периодические дроби и смешанные системы для продвинутого уровня</p>
                 </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <h3 data-i18n="step4_title">Закрепление</h3>
+                <div class="feature">
+                    <div class="feature-icon">4️⃣</div>
+                    <h4 data-i18n="step4_title">Закрепление</h4>
                     <p data-i18n="step4_desc">Решайте задачи и используйте калькулятор для проверки ответов</p>
                 </div>
             </div>
@@ -163,14 +202,15 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <p>© 2026 <span data-i18n="footer_text">Учебный курс "Системы счисления" | Создано на основе материалов курса информатики</span></p>
+        <div class="footer-logo" data-i18n="logo">🎓 Учи играючи!</div>
+        <div>© 2026 <span data-i18n="footer_text">Учебный курс "Системы счисления"</span></div>
+        <div class="footer-tagline" data-i18n="footer_made">Создано на основе материалов курса информатики</div>
     </div>
 </footer>
 
-<!-- Подключаем переводы -->
+<!-- Подключаем переводы и инициализацию -->
 <script src="../translations.js"></script>
 <script>
-// Инициализация языка при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     // Восстанавливаем сохранённый язык
     let savedLang = localStorage.getItem('siteLang');
