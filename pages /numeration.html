@@ -3,127 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Системы счисления — Учебный курс</title>
+    <title data-i18n="numeracy_title">🔢 Системы счисления — Учебный курс</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="numeration.html" class="logo">🔢 Системы счисления</a>
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html" class="active">Главная</a></li>
-                <li><a href="positional.html">Позиционные СС</a></li>
-                <li><a href="integers.html">Целые числа</a></li>
-                <li><a href="fractions.html">Дробные числа</a></li>
-                <li><a href="periodic.html">Периодические</a></li>
-                <li><a href="mixed.html">Смешанные СС</a></li>
-                <li><a href="fibonacci.html">Фибоначчи</a></li>
-                <li><a href="tasks.html">Задачи</a></li>
-                <li><a href="calculator.html">Калькулятор</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <header class="hero">
-        <div class="container">
-            <h1>Позиционные системы счисления</h1>
-            <p class="subtitle">Полный учебный курс по теории и практике перевода чисел между системами счисления</p>
-            <div class="hero-stats">
-                <div class="stat"><span>8</span><p>Тем</p></div>
-                <div class="stat"><span>30+</span><p>Примеров</p></div>
-                <div class="stat"><span>60+</span><p>Задач</p></div>
-                <div class="stat"><span>∞</span><p>Практики</p></div>
+<!-- Плавающие эмодзи -->
+<div class="floating-bg">
+    <div class="float-item" style="--x: 5%; --delay: 0s;">🔢</div>
+    <div class="float-item" style="--x: 15%; --delay: 2s;">🧮</div>
+    <div class="float-item" style="--x: 25%; --delay: 4s;">💻</div>
+    <div class="float-item" style="--x: 35%; --delay: 1s;">📐</div>
+    <div class="float-item" style="--x: 45%; --delay: 3s;">🔄</div>
+    <div class="float-item" style="--x: 55%; --delay: 5s;">✨</div>
+    <div class="float-item" style="--x: 65%; --delay: 2.5s;">🎯</div>
+    <div class="float-item" style="--x: 75%; --delay: 0.5s;">📊</div>
+    <div class="float-item" style="--x: 85%; --delay: 3.5s;">🔣</div>
+    <div class="float-item" style="--x: 95%; --delay: 1.5s;"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="logo" data-i18n="logo">🎓 Учи играючи!</a>
+        <ul class="nav-menu">
+            <li><a href="../index.html" data-i18n="nav_home">Главная</a></li>
+            <li><a href="#topics" data-i18n="nav_topics">Темы</a></li>
+            <li><a href="#start" data-i18n="nav_start">Быстрый старт</a></li>
+            <li>
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+                    <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+                    <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+                    <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1 data-i18n="hero_title">🔢 Системы счисления</h1>
+        <p class="subtitle" data-i18n="hero_subtitle">Полный учебный курс по теории и практике перевода чисел между системами счисления</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <span>8</span>
+                <p data-i18n="stat_topics">Тем</p>
+            </div>
+            <div class="stat">
+                <span>30+</span>
+                <p data-i18n="stat_examples">Примеров</p>
+            </div>
+            <div class="stat">
+                <span>60+</span>
+                <p data-i18n="stat_tasks">Задач</p>
+            </div>
+            <div class="stat">
+                <span>∞</span>
+                <p data-i18n="stat_practice">Практики</p>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <main class="container">
-        <section class="intro">
-            <h2>О курсе</h2>
-            <p>Этот сайт представляет собой полное учебное пособие по позиционным системам счисления. Вы изучите теорию, алгоритмы перевода, схему Горнера, работу с дробными и периодическими числами, а также смешанные системы счисления.</p>
-        </section>
+<!-- Main Content -->
+<main>
+    <div class="container">
+        <div class="intro">
+            <h2 data-i18n="about_title">О курсе</h2>
+            <p data-i18n="about_text">Этот сайт представляет собой полное учебное пособие по позиционным системам счисления. Вы изучите теорию, алгоритмы перевода, схему Горнера, работу с дробными и периодическими числами, а также смешанные системы счисления.</p>
+        </div>
 
-        <section class="topics-grid">
-            <h2>📚 Темы курса</h2>
+        <section id="topics" class="topics-grid">
+            <h2 data-i18n="topics_title">📚 Темы курса</h2>
             <div class="grid">
-                <a href=" positional.html" class="topic-card">
+                <a href="positional.html" class="topic-card">
                     <div class="card-icon">📐</div>
-                    <h3>Позиционные СС</h3>
-                    <p>Основные понятия, алфавит, основание, разряды, развернутая форма и схема Горнера</p>
+                    <h3 data-i18n="topic1_title">Позиционные СС</h3>
+                    <p data-i18n="topic1_desc">Основные понятия, алфавит, основание, разряды, развернутая форма и схема Горнера</p>
                 </a>
-                <a href=" integers.html" class="topic-card">
+
+                <a href="integers.html" class="topic-card">
                     <div class="card-icon">🔢</div>
-                    <h3>Целые числа</h3>
-                    <p>Перевод целых чисел между системами счисления, алгоритмы деления и умножения</p>
+                    <h3 data-i18n="topic2_title">Целые числа</h3>
+                    <p data-i18n="topic2_desc">Перевод целых чисел между системами счисления, алгоритмы деления и умножения</p>
                 </a>
-                <a href=" fractions.html" class="topic-card">
+
+                <a href="fractions.html" class="topic-card">
                     <div class="card-icon">🧮</div>
-                    <h3>Дробные числа</h3>
-                    <p>Перевод конечных P-ичных дробей, два способа вычисления, таблица умножения</p>
+                    <h3 data-i18n="topic3_title">Дробные числа</h3>
+                    <p data-i18n="topic3_desc">Перевод конечных P-ичных дробей, два способа вычисления, таблица умножения</p>
                 </a>
-                <a href=" periodic.html" class="topic-card">
+
+                <a href="periodic.html" class="topic-card">
                     <div class="card-icon">🔄</div>
-                    <h3>Периодические дроби</h3>
-                    <p>Бесконечные периодические дроби, геометрическая прогрессия, два метода перевода</p>
+                    <h3 data-i18n="topic4_title">Периодические дроби</h3>
+                    <p data-i18n="topic4_desc">Бесконечные периодические дроби, геометрическая прогрессия, два метода перевода</p>
                 </a>
-                <a href=" mixed.html" class="topic-card">
+
+                <a href="mixed.html" class="topic-card">
                     <div class="card-icon">🔀</div>
-                    <h3>Смешанные СС</h3>
-                    <p>P-Q-ичные системы, двоично-десятичная, теоремы 2 и 3, группировка цифр</p>
+                    <h3 data-i18n="topic5_title">Смешанные СС</h3>
+                    <p data-i18n="topic5_desc">P-Q-ичные системы, двоично-десятичная, теоремы 2 и 3, группировка цифр</p>
                 </a>
-                <a href=" fibonacci.html" class="topic-card">
+
+                <a href="fibonacci.html" class="topic-card">
                     <div class="card-icon">🌀</div>
-                    <h3>Система Фибоначчи</h3>
-                    <p>Необычная система счисления на основе чисел Фибоначчи, пример 10010_FB</p>
+                    <h3 data-i18n="topic6_title">Система Фибоначчи</h3>
+                    <p data-i18n="topic6_desc">Необычная система счисления на основе чисел Фибоначчи, пример 10010_FB</p>
                 </a>
-                <a href=" tasks.html" class="topic-card">
+
+                <a href="tasks.html" class="topic-card highlight">
                     <div class="card-icon">✏️</div>
-                    <h3>Задачи и задания</h3>
-                    <p>Более 60 задач разного уровня сложности с подробными решениями</p>
+                    <h3 data-i18n="topic7_title">Задачи и задания</h3>
+                    <p data-i18n="topic7_desc">Более 60 задач разного уровня сложности с подробными решениями</p>
                 </a>
-                <a href=" calculator.html" class="topic-card highlight">
+
+                <a href="calculator.html" class="topic-card">
                     <div class="card-icon">🧰</div>
-                    <h3>Калькулятор</h3>
-                    <p>Интерактивный инструмент для перевода чисел между любыми системами счисления</p>
+                    <h3 data-i18n="topic8_title">Калькулятор</h3>
+                    <p data-i18n="topic8_desc">Интерактивный инструмент для перевода чисел между любыми системами счисления</p>
                 </a>
             </div>
         </section>
 
-        <section class="quick-start">
-            <h2>🚀 Быстрый старт</h2>
+        <section id="start" class="quick-start">
+            <h2 data-i18n="quickstart_title">🚀 Быстрый старт</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-num">1</div>
-                    <h4>Основы</h4>
-                    <p>Начните с темы "Позиционные СС" — разберитесь с понятиями разряда и основания</p>
+                    <h3 data-i18n="step1_title">Основы</h3>
+                    <p data-i18n="step1_desc">Начните с темы "Позиционные СС" — разберитесь с понятиями разряда и основания</p>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <h4>Практика</h4>
-                    <p>Переходите к целым и дробным числам — освойте алгоритмы перевода</p>
+                    <h3 data-i18n="step2_title">Практика</h3>
+                    <p data-i18n="step2_desc">Переходите к целым и дробным числам — освойте алгоритмы перевода</p>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <h4>Углубление</h4>
-                    <p>Изучите периодические дроби и смешанные системы для продвинутого уровня</p>
+                    <h3 data-i18n="step3_title">Углубление</h3>
+                    <p data-i18n="step3_desc">Изучите периодические дроби и смешанные системы для продвинутого уровня</p>
                 </div>
                 <div class="step">
                     <div class="step-num">4</div>
-                    <h4>Закрепление</h4>
-                    <p>Решайте задачи и используйте калькулятор для проверки ответов</p>
+                    <h3 data-i18n="step4_title">Закрепление</h3>
+                    <p data-i18n="step4_desc">Решайте задачи и используйте калькулятор для проверки ответов</p>
                 </div>
             </div>
         </section>
-    </main>
+    </div>
+</main>
 
-    <footer>
-        <div class="container">
-            <p>© 2026 Учебный курс "Системы счисления" | Создано на основе материалов курса информатики</p>
-        </div>
-    </footer>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>© 2026 <span data-i18n="footer_text">Учебный курс "Системы счисления" | Создано на основе материалов курса информатики</span></p>
+    </div>
+</footer>
 
-    <script src="js/main.js"></script>
+<!-- Подключаем переводы -->
+<script src="../translations.js"></script>
+<script>
+// Инициализация языка при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    // Восстанавливаем сохранённый язык
+    let savedLang = localStorage.getItem('siteLang');
+    if (!savedLang) {
+        const browserLang = navigator.language.slice(0, 2).toLowerCase();
+        const supported = ['ru', 'en', 'de', 'es'];
+        savedLang = supported.includes(browserLang) ? browserLang : 'ru';
+    }
+    applyLanguage(savedLang);
+
+    // Обработчики переключателя
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            applyLanguage(btn.dataset.lang);
+        });
+    });
+});
+</script>
 </body>
 </html>
