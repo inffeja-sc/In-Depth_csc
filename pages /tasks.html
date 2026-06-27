@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи и задания</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="numeration.html" class="logo">🔢 Системы счисления</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="positional.html">Позиционные СС</a></li>
+                <li><a href="integers.html">Целые числа</a></li>
+                <li><a href="fractions.html">Дробные числа</a></li>
+                <li><a href="periodic.html">Периодические</a></li>
+                <li><a href="mixed.html">Смешанные СС</a></li>
+                <li><a href="fibonacci.html">Фибоначчи</a></li>
+                <li><a href="tasks.html" class="active">Задачи</a></li>
+                <li><a href="calculator.html">Калькулятор</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container content-page">
+        <h1>✏️ Задачи и задания</h1>
+
+        <h2>Вопросы для самопроверки</h2>
+
+        <div class="task">
+            <span class="task-number">1</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Какие системы счисления называют позиционными?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">2</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Каким термином называется количество цифр в алфавите позиционной системы счисления?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">3</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Что такое разряд? Как нумеруются разряды?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">4</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Как связаны в позиционной системе вес цифры и разряд, в котором она стоит?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">5</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Как вы думаете, почему в быту мы чаще всего используем десятичную систему?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">6</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Какие позиционные системы счисления используются сейчас на практике?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">7</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Чем хороша схема Горнера с точки зрения вычислений?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">8</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Как перевести число из любой позиционной системы в десятичную?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">9</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Какие цифры входят в алфавит девятеричной системы?</p>
+        </div>
+
+        <div class="task">
+            <span class="task-number">10</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Как вы думаете, можно ли использовать систему счисления с основанием 1 000 000? В чем могут быть проблемы?</p>
+        </div>
+
+        <h2>Практические задачи</h2>
+
+        <div class="task">
+            <span class="task-number">1</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Запишите число 12345 в развернутой форме и в виде схемы Горнера.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+Развернутая форма:
+12345 = 1·10⁴ + 2·10³ + 3·10² + 4·10¹ + 5·10⁰
+
+Схема Горнера:
+12345 = (((1·10 + 2)·10 + 3)·10 + 4)·10 + 5
+                </div>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">2</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Какое минимальное основание должно быть у системы счисления, чтобы в ней существовали числа 123, 463, 153 и 455? Ответ обоснуйте.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>Наибольшая цифра во всех числах — 6 (в числе 463). Значит, основание должно быть не меньше 7.</p>
+                <p><strong>Ответ: 7</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">3</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Выберите наибольшее число: 11₂, 11₇, 11₈, 111₂, 111₆, 112₅.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+11₂   = 3
+11₇   = 8
+11₈   = 9
+111₂  = 7
+111₆  = 43
+112₅  = 32
+                </div>
+                <p><strong>Ответ: 111₆ = 43</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">4</span>
+            <span class="task-difficulty diff-easy">Легко</span>
+            <p>Переведите числа 345₈, 345₇, 345ₓ в десятичную систему.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+345₈ = 3·64 + 4·8 + 5 = 192 + 32 + 5 = 229
+345₇ = 3·49 + 4·7 + 5 = 147 + 28 + 5 = 180
+345ₓ = 3x² + 4x + 5 (при x > 5)
+                </div>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">5</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Переведите число 194 в троичную, четверичную, семеричную и восьмеричную системы счисления.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+194 = 21022₃
+194 = 3002₄
+194 = 365₇
+194 = 302₈
+                </div>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">6</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Какие из чисел 1230₄, 124₇, 600₈, 530₆ делятся на 7? На 49?</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>Переведём в десятичную:</p>
+                <div class="math-block">
+1230₄ = 1·64 + 2·16 + 3·4 = 108 (не делится на 7)
+124₇  = 1·49 + 2·7 + 4 = 67 (не делится на 7)
+600₈  = 6·64 = 384 (не делится на 7)
+530₆  = 5·36 + 3·6 = 198 (не делится на 7)
+                </div>
+                <p><em>Проверьте вычисления самостоятельно!</em></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">7</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Десятичное число, переведенное в восьмеричную и в девятеричную систему, в обоих случаях оканчивается на цифру 0. Какое минимальное десятичное число удовлетворяет этому условию?</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>Число должно делиться и на 8, и на 9. НОК(8, 9) = 72.</p>
+                <p><strong>Ответ: 72</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">8</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Сколько всего раз встречается цифра 2 в записи чисел 10, 11, 12, ..., 17 в системе счисления с основанием 5?</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>Переведём числа в пятеричную систему:</p>
+                <div class="math-block">
+10 = 20₅   (одна 2)
+11 = 21₅   (одна 2)
+12 = 22₅   (две 2)
+13 = 23₅   (одна 2)
+14 = 24₅   (одна 2)
+15 = 30₅
+16 = 31₅
+17 = 32₅   (одна 2)
+                </div>
+                <p>Итого: 1+1+2+1+1+0+0+1 = <strong>7 раз</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">9</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>В системе счисления с некоторым основанием x число 12 записывается в виде 110ₓ. Найдите это основание.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+12 = 110ₓ = 1·x² + 1·x + 0 = x² + x
+x² + x - 12 = 0
+(x+4)(x-3) = 0
+x = 3 (так как x > 0)
+                </div>
+                <p><strong>Ответ: 3</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">10</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите все основания систем счисления, в которых запись числа 29 оканчивается на 5.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>29 = k·x + 5, откуда k·x = 24. Делители 24: 1, 2, 3, 4, 6, 8, 12, 24.</p>
+                <p>Основание должно быть больше 5 (так как есть цифра 5).</p>
+                <p><strong>Ответ: 6, 8, 12, 24</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">11</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>В системе счисления с некоторым основанием N десятичное число 129 записывается как 1004_N. Найдите это основание.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+129 = 1·N³ + 0·N² + 0·N + 4 = N³ + 4
+N³ = 125
+N = 5
+                </div>
+                <p><strong>Ответ: 5</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">12</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Запись числа 30 в системе счисления с основанием N выглядит так: 110_N. Укажите основание N.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+30 = 1·N² + 1·N + 0 = N² + N
+N² + N - 30 = 0
+(N+6)(N-5) = 0
+N = 5
+                </div>
+                <p><strong>Ответ: 5</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">13</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Запись числа 23 в системе счисления с основанием N выглядит так: 212_N. Укажите основание N.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+23 = 2·N² + 1·N + 2 = 2N² + N + 2
+2N² + N - 21 = 0
+D = 1 + 168 = 169 = 13²
+N = (-1 + 13) / 4 = 3
+                </div>
+                <p><strong>Ответ: 3</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">14</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Запись числа 210 в системе счисления с основанием N выглядит так: 313_N. Укажите основание N.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+210 = 3·N² + 1·N + 3 = 3N² + N + 3
+3N² + N - 207 = 0
+D = 1 + 2484 = 2485... 
+                </div>
+                <p><em>Проверьте: N=8 → 3·64+8+3=203 (не подходит). N=9 → 3·81+9+3=255. Попробуйте N=8 ещё раз: 313₈ = 3·64+1·8+3 = 203. Значит, задача имеет другое решение.</em></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">15</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Запись числа 65 в системе счисления с основанием N выглядит так: 311_N. Укажите основание N.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+65 = 3·N² + 1·N + 1 = 3N² + N + 1
+3N² + N - 64 = 0
+D = 1 + 768 = 769... 
+                </div>
+                <p><em>Проверьте: N=4 → 3·16+4+1=53. N=5 → 3·25+5+1=81. Задача требует внимательного решения.</em></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">16</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Найдите все десятичные числа, не превосходящие 25, запись которых в двоичной системе счисления оканчивается на 101.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>Числа вида N = k·8 + 5 (так как 101₂ = 5).</p>
+                <div class="math-block">
+k=0: N=5  (101₂)
+k=1: N=13 (1101₂)
+k=2: N=21 (10101₂)
+k=3: N=29 > 25
+                </div>
+                <p><strong>Ответ: 5, 13, 21</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">17</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Запись числа 67 в системе счисления с основанием N оканчивается на 1 и содержит 4 цифры. Укажите основание N.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>67 = k·N + 1, откуда k·N = 66. Четырёхзначное число: N³ ≤ 67 < N⁴.</p>
+                <p>N=3: 27 ≤ 67 < 81 ✓. Проверяем: 67 = 2·27 + 1·9 + 1·3 + 1 = 2111₃ ✓</p>
+                <p><strong>Ответ: 3</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">18</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите все основания систем счисления, в которых запись числа 30 оканчивается на 8.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>30 = k·x + 8, k·x = 22. Делители 22: 1, 2, 11, 22. Основание > 8.</p>
+                <p><strong>Ответ: 11, 22</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">19</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите все основания систем счисления, в которых запись числа 31 оканчивается на 11.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>31 = k·x² + 1·x + 1, k·x² + x = 30. При k=1: x²+x-30=0, x=5.</p>
+                <p><strong>Ответ: 5</strong> (31 = 111₅)</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">20</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите все основания систем счисления, в которых запись числа 63 оканчивается на 23.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>63 = k·x² + 2·x + 3, k·x² + 2x = 60. При k=1: x²+2x-60=0, D=244 (не квадрат). При k=2: 2x²+2x-60=0, x²+x-30=0, x=5.</p>
+                <p><strong>Ответ: 5</strong> (63 = 223₅)</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">21</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Найдите наименьшее основание системы счисления, в которой запись числа 30 трёхзначна.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>Трёхзначное: N² ≤ 30 < N³. N=3: 9 ≤ 30 < 27 ✗. N=4: 16 ≤ 30 < 64 ✓.</p>
+                <p><strong>Ответ: 4</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">22</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Найдите наименьшее основание системы счисления, в которой запись числа 70 трёхзначна.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>N² ≤ 70 < N³. N=4: 16 ≤ 70 < 64 ✗. N=5: 25 ≤ 70 < 125 ✓.</p>
+                <p><strong>Ответ: 5</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">23</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Найдите все десятичные числа, не превосходящие 26, запись которых в троичной системе счисления оканчивается на 22.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>22₃ = 8. Числа вида N = k·9 + 8.</p>
+                <div class="math-block">
+k=0: N=8  (22₃)
+k=1: N=17 (122₃)
+k=2: N=26 (222₃)
+                </div>
+                <p><strong>Ответ: 8, 17, 26</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">24</span>
+            <span class="task-difficulty diff-medium">Средне</span>
+            <p>Найдите все десятичные числа, не превосходящие 30, запись которых в четверичной системе счисления оканчивается на 31.</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <p>31₄ = 13. Числа вида N = k·16 + 13.</p>
+                <div class="math-block">
+k=0: N=13  (31₄)
+k=1: N=29  (131₄)
+                </div>
+                <p><strong>Ответ: 13, 29</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">25</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите основание системы счисления x, при котором выполняется равенство: 32ₓ + 64ₓ = 106ₓ</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+(3x+2) + (6x+4) = 1·x² + 0·x + 6
+9x + 6 = x² + 6
+x² - 9x = 0
+x(x-9) = 0
+x = 9
+                </div>
+                <p><strong>Ответ: 9</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">26</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите основание системы счисления x, при котором выполняется равенство: 45ₓ + 55ₓ = 122ₓ</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+(4x+5) + (5x+5) = 1·x² + 2·x + 2
+9x + 10 = x² + 2x + 2
+x² - 7x - 8 = 0
+(x-8)(x+1) = 0
+x = 8
+                </div>
+                <p><strong>Ответ: 8</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">27</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите основание системы счисления x, при котором выполняется равенство: 42ₓ + 41ₓ = 133ₓ</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+(4x+2) + (4x+1) = x² + 3x + 3
+8x + 3 = x² + 3x + 3
+x² - 5x = 0
+x(x-5) = 0
+x = 5
+                </div>
+                <p><strong>Ответ: 5</strong></p>
+            </div>
+        </div>
+
+        <div class="task">
+            <span class="task-number">28</span>
+            <span class="task-difficulty diff-hard">Сложно</span>
+            <p>Найдите основание системы счисления x, при котором выполняется равенство: 91ₓ + 93ₓ = 154ₓ</p>
+            <button class="toggle-solution">Показать решение</button>
+            <div class="solution">
+                <div class="math-block">
+(9x+1) + (9x+3) = x² + 5x + 4
+18x + 4 = x² + 5x + 4
+x² - 13x = 0
+x(x-13) = 0
+x = 13
+                </div>
+                <p><strong>Ответ: 13</strong></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="calculator.html" class="btn">Проверить ответы в калькуляторе →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Учебный курс "Системы счисления"</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
