@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система счисления Фибоначчи</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">🔢 Системы счисления</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="positional.html">Позиционные СС</a></li>
+                <li><a href="integers.html">Целые числа</a></li>
+                <li><a href="fractions.html">Дробные числа</a></li>
+                <li><a href="periodic.html">Периодические</a></li>
+                <li><a href="mixed.html">Смешанные СС</a></li>
+                <li><a href="fibonacci.html" class="active">Фибоначчи</a></li>
+                <li><a href="tasks.html">Задачи</a></li>
+                <li><a href="calculator.html">Калькулятор</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container content-page">
+        <h1>🌀 Система счисления Фибоначчи</h1>
+
+        <div class="definition">
+            <h4>Что это такое?</h4>
+            <p>Система счисления с основанием ряд Фибоначчи — это необычная система, в которой "разрядами" служат числа Фибоначчи, а не степени какого-либо основания.</p>
+        </div>
+
+        <h2>Ряд Фибоначчи</h2>
+
+        <p>Ряд Фибоначчи строится по правилу: каждое следующее число равно сумме двух предыдущих.</p>
+
+        <div class="math-block">
+FB ряд: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+
+(первую единицу часто игнорируют — она техническая, 
+существует только для того, чтобы запустить ряд)
+        </div>
+
+        <h2>Пример перевода</h2>
+
+        <div class="example">
+            <h4>Пример. Число 10010_FB</h4>
+            <p>Запишем разряды (справа налево):</p>
+            <div class="math-block">
+разряды:  4  3  2  1  0
+цифры:    1  0  0  1  0
+веса FB:  8  5  3  2  1
+            </div>
+            <p>Вычисляем значение:</p>
+            <div class="math-block">
+10010_FB = 1·8 + 0·5 + 0·3 + 1·2 + 0·1
+         = 8 + 2 = 10₁₀
+            </div>
+        </div>
+
+        <h2>Особенности системы</h2>
+
+        <ul>
+            <li><strong>Непозиционная в классическом смысле</strong> — веса разрядов не являются степенями одного числа</li>
+            <li><strong>Избыточность</strong> — одно и то же число можно представить несколькими способами</li>
+            <li><strong>Каноническая форма</strong> — обычно используется форма без двух единиц подряд (это следует из свойства F(n) = F(n-1) + F(n-2))</li>
+            <li><strong>Теорема Цекендорфа</strong> — каждое натуральное число единственным образом представляется в виде суммы непоследовательных чисел Фибоначчи</li>
+        </ul>
+
+        <div class="note">
+            <h4>💡 Интересный факт</h4>
+            <p>Система счисления Фибоначчи применяется в теории кодирования, в некоторых алгоритмах поиска и в математической биологии (например, для моделирования роста популяций).</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="tasks.html" class="btn">Перейти к задачам →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Учебный курс "Системы счисления"</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
