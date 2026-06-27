@@ -16,28 +16,28 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 10px;
+    padding: 15px;
     overflow-y: auto;
   }
   
   .game-container {
     background: white;
-    border-radius: 25px;
-    padding: 15px;
+    border-radius: 30px;
+    padding: 22px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    max-width: 650px;
+    max-width: 700px;
     width: 100%;
     position: relative;
-    border: 4px solid #ff6b9d;
+    border: 5px solid #ff6b9d;
     margin: 10px auto;
   }
   
   h1 {
     text-align: center;
     color: #ff6b9d;
-    font-size: 1.7em;
+    font-size: 2em;
     text-shadow: 2px 2px 0 #ffd93d, 4px 4px 0 rgba(0,0,0,0.1);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     animation: bounce 2s infinite;
   }
   
@@ -49,20 +49,20 @@
   .stats {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 10px;
   }
   
   .stat-box {
     background: linear-gradient(135deg, #ffd93d, #ff9a3c);
-    padding: 6px 14px;
-    border-radius: 18px;
+    padding: 10px 20px;
+    border-radius: 22px;
     color: white;
     font-weight: bold;
-    font-size: 0.95em;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    min-width: 90px;
+    font-size: 1.15em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    min-width: 110px;
     text-align: center;
   }
   
@@ -71,89 +71,63 @@
   
   .mode-selector {
     display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 14px;
     justify-content: center;
     flex-wrap: wrap;
   }
   
   .mode-btn {
-    padding: 8px 16px;
+    padding: 12px 22px;
     border: none;
-    border-radius: 20px;
-    font-size: 0.95em;
+    border-radius: 25px;
+    font-size: 1.15em;
     font-weight: bold;
     cursor: pointer;
     background: #e0e0e0;
     color: #555;
     transition: all 0.3s;
     font-family: inherit;
-    box-shadow: 0 3px 0 #bbb;
+    box-shadow: 0 4px 0 #bbb;
   }
   
   .mode-btn:hover { transform: translateY(-2px); }
-  .mode-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #bbb; }
+  .mode-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #bbb; }
   .mode-btn.active {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    box-shadow: 0 3px 0 #4a3a8a;
-  }
-  
-  .difficulty {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .diff-btn {
-    padding: 6px 12px;
-    border: 2px solid #ff6b9d;
-    border-radius: 18px;
-    background: white;
-    color: #ff6b9d;
-    font-weight: bold;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.85em;
-    transition: all 0.3s;
-  }
-  
-  .diff-btn.active {
-    background: #ff6b9d;
-    color: white;
+    box-shadow: 0 4px 0 #4a3a8a;
   }
   
   .task-area {
     background: linear-gradient(135deg, #fff5e6, #ffe0f0);
-    border-radius: 15px;
-    padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 18px;
+    padding: 14px;
+    margin-bottom: 14px;
     text-align: center;
-    border: 2px dashed #ff6b9d;
-    min-height: 60px;
+    border: 3px dashed #ff6b9d;
+    min-height: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
   
   .task-text {
-    font-size: 1.1em;
+    font-size: 1.3em;
     color: #333;
   }
   
   .coord-display {
-    font-size: 1.7em;
+    font-size: 2.1em;
     font-weight: bold;
     color: #764ba2;
     background: white;
-    padding: 6px 20px;
-    border-radius: 12px;
+    padding: 8px 25px;
+    border-radius: 15px;
     display: inline-block;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     animation: pulse 1.5s infinite;
   }
   
@@ -164,19 +138,19 @@
   
   .input-area {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
   }
   
   .coord-input {
-    width: 70px;
-    padding: 8px;
-    font-size: 1.1em;
+    width: 80px;
+    padding: 10px;
+    font-size: 1.3em;
     text-align: center;
     border: 3px solid #667eea;
-    border-radius: 12px;
+    border-radius: 15px;
     font-family: inherit;
     font-weight: bold;
     color: #333;
@@ -189,29 +163,29 @@
   }
   
   .submit-btn {
-    padding: 8px 20px;
+    padding: 10px 25px;
     background: linear-gradient(135deg, #43e97b, #38f9d7);
     color: white;
     border: none;
-    border-radius: 20px;
-    font-size: 1em;
+    border-radius: 22px;
+    font-size: 1.25em;
     font-weight: bold;
     cursor: pointer;
     font-family: inherit;
-    box-shadow: 0 4px 0 #2d9a5a;
+    box-shadow: 0 5px 0 #2d9a5a;
     transition: all 0.2s;
   }
   
   .submit-btn:hover { transform: translateY(-2px); }
-  .submit-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #2d9a5a; }
+  .submit-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #2d9a5a; }
   
   .canvas-wrapper {
     position: relative;
     background: white;
-    border-radius: 15px;
-    padding: 5px;
+    border-radius: 18px;
+    padding: 8px;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     display: flex;
     justify-content: center;
   }
@@ -219,7 +193,7 @@
   canvas {
     display: block;
     cursor: crosshair;
-    border-radius: 12px;
+    border-radius: 14px;
     background: #fafafa;
     max-width: 100%;
     height: auto;
@@ -227,10 +201,10 @@
   
   .feedback {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.45em;
     font-weight: bold;
-    min-height: 30px;
-    margin-bottom: 8px;
+    min-height: 35px;
+    margin-bottom: 12px;
     transition: all 0.3s;
   }
   
@@ -268,22 +242,22 @@
     background: linear-gradient(135deg, #ffd93d, #ff9a3c);
     color: white;
     border: none;
-    padding: 6px 16px;
-    border-radius: 18px;
+    padding: 10px 22px;
+    border-radius: 22px;
     cursor: pointer;
     font-family: inherit;
     font-weight: bold;
-    box-shadow: 0 3px 0 #c77a2e;
-    font-size: 0.9em;
+    box-shadow: 0 4px 0 #c77a2e;
+    font-size: 1.1em;
   }
   
-  .hint-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #c77a2e; }
+  .hint-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #c77a2e; }
   
   .mascot {
     position: absolute;
-    top: -20px;
-    right: 15px;
-    font-size: 2.2em;
+    top: -22px;
+    right: 18px;
+    font-size: 2.5em;
     animation: wave 2s infinite;
   }
   
@@ -292,13 +266,14 @@
     50% { transform: rotate(15deg); }
   }
   
-  @media (max-height: 700px) {
-    h1 { font-size: 1.4em; margin-bottom: 6px; }
-    .task-area { padding: 6px; min-height: 50px; }
-    .coord-display { font-size: 1.4em; padding: 4px 15px; }
-    .feedback { font-size: 1em; min-height: 24px; }
-    .stat-box { padding: 4px 10px; font-size: 0.85em; min-width: 80px; }
-    .mascot { font-size: 1.8em; top: -15px; }
+  @media (max-height: 750px) {
+    h1 { font-size: 1.6em; margin-bottom: 8px; }
+    .task-area { padding: 10px; min-height: 60px; }
+    .coord-display { font-size: 1.7em; padding: 6px 20px; }
+    .feedback { font-size: 1.2em; min-height: 28px; }
+    .stat-box { padding: 7px 14px; font-size: 1em; min-width: 95px; }
+    .mode-btn { padding: 9px 16px; font-size: 1em; }
+    .mascot { font-size: 2em; top: -18px; }
   }
 </style>
 </head>
@@ -319,19 +294,13 @@
     <button class="mode-btn" data-mode="findCoord">📝 Назвать координаты</button>
   </div>
   
-  <div class="difficulty">
-    <button class="diff-btn active" data-range="5">Легко (-5…5)</button>
-    <button class="diff-btn" data-range="10">Средне (-10…10)</button>
-    <button class="diff-btn" data-range="15">Сложно (-15…15)</button>
-  </div>
-  
   <div class="task-area">
     <div class="task-text" id="taskText">Поставь точку с координатами:</div>
     <div class="coord-display" id="coordDisplay">(3, 4)</div>
     <div class="input-area" id="inputArea" style="display:none;">
-      <span style="font-size:1.1em; font-weight:bold;">X=</span>
+      <span style="font-size:1.3em; font-weight:bold;">X=</span>
       <input type="number" class="coord-input" id="inputX" placeholder="?">
-      <span style="font-size:1.1em; font-weight:bold;">Y=</span>
+      <span style="font-size:1.3em; font-weight:bold;">Y=</span>
       <input type="number" class="coord-input" id="inputY" placeholder="?">
       <button class="submit-btn" id="submitBtn">✓</button>
     </div>
@@ -343,9 +312,9 @@
   
   <div class="feedback" id="feedback"></div>
   
-  <div style="text-align:center; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+  <div style="text-align:center; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
     <button class="hint-btn" id="hintBtn">💡 Подсказка</button>
-    <button class="hint-btn" id="skipBtn" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb); box-shadow: 0 3px 0 #5a8ad1;">⏭ Пропустить</button>
+    <button class="hint-btn" id="skipBtn" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb); box-shadow: 0 4px 0 #5a8ad1;">⏭ Пропустить</button>
   </div>
 </div>
 
@@ -368,9 +337,8 @@ let targetX = 0, targetY = 0;
 let waitingForAnswer = true;
 let placedPoints = [];
 let hintUsed = false;
-let hintRect = null; // для отрисовки подсказки-квадрата
+let hintRect = null;
 
-// Звуки
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function playSound(freq, duration, type='sine') {
   const osc = audioCtx.createOscillator();
@@ -393,17 +361,15 @@ function playWrong() {
   playSound(200, 0.3, 'sawtooth');
 }
 
-// Адаптивный размер канваса под экран
 function resizeCanvas() {
   const wrapper = canvas.parentElement;
   const availW = wrapper.clientWidth - 10;
-  // Оценим доступную высоту: окно минус всё вокруг канваса
   const container = document.querySelector('.game-container');
   const containerRect = container.getBoundingClientRect();
   const otherHeight = containerRect.height - canvas.offsetHeight + 20;
   const availH = window.innerHeight - otherHeight - 40;
   
-  const size = Math.max(280, Math.min(availW, availH, 550));
+  const size = Math.max(300, Math.min(availW, availH, 550));
   canvas.style.width = size + 'px';
   canvas.style.height = size + 'px';
 }
@@ -422,7 +388,6 @@ function drawGrid() {
   const centerX = w / 2;
   const centerY = h / 2;
   
-  // Сетка
   ctx.strokeStyle = '#e0e0e0';
   ctx.lineWidth = 1;
   for (let i = -range; i <= range; i++) {
@@ -434,7 +399,6 @@ function drawGrid() {
     ctx.stroke();
   }
   
-  // Оси
   ctx.strokeStyle = '#333';
   ctx.lineWidth = 2.5;
   ctx.beginPath();
@@ -442,7 +406,6 @@ function drawGrid() {
   ctx.moveTo(centerX, 0); ctx.lineTo(centerX, h);
   ctx.stroke();
   
-  // Стрелки
   ctx.fillStyle = '#333';
   ctx.beginPath();
   ctx.moveTo(w - 10, centerY - 7);
@@ -455,9 +418,8 @@ function drawGrid() {
   ctx.lineTo(centerX + 7, 10);
   ctx.fill();
   
-  // Подписи чисел
   ctx.fillStyle = '#333';
-  const labelSize = Math.max(10, Math.min(14, cellSize * 0.45));
+  const labelSize = Math.max(11, Math.min(15, cellSize * 0.5));
   ctx.font = `bold ${labelSize}px Comic Sans MS`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
@@ -471,19 +433,16 @@ function drawGrid() {
   }
   ctx.fillText('0', centerX - cellSize * 0.5, centerY + cellSize * 0.55);
   
-  // Буквы осей
-  ctx.font = `bold ${Math.max(12, cellSize * 0.55)}px Comic Sans MS`;
+  ctx.font = `bold ${Math.max(13, cellSize * 0.6)}px Comic Sans MS`;
   ctx.fillStyle = '#ff6b9d';
   ctx.fillText('X', w - 18, centerY - 18);
   ctx.fillText('Y', centerX + 18, 18);
   
-  // Подсказка-квадрат (если активна)
   if (hintRect) {
     ctx.fillStyle = 'rgba(255, 217, 61, 0.35)';
     ctx.fillRect(hintRect.x, hintRect.y, hintRect.w, hintRect.h);
   }
   
-  // Нарисовать точки
   placedPoints.forEach(p => drawPoint(p.x, p.y, p.color, p.showLabel));
 }
 
@@ -564,7 +523,6 @@ function newQuestion() {
     inputY.value = '';
     setTimeout(() => inputX.focus(), 50);
     canvas.style.cursor = 'default';
-    // Точка-вопрос БЕЗ подписи координат
     placedPoints.push({x: targetX, y: targetY, color: '#ff6b9d', showLabel: false});
   }
   
@@ -590,7 +548,6 @@ function checkAnswer(userX, userY) {
     if (mode === 'findPoint') {
       placedPoints.push({x: userX, y: userY, color: '#43e97b', showLabel: true});
     } else {
-      // В режиме "назвать" заменим точку на версию с подписью
       placedPoints = [{x: targetX, y: targetY, color: '#43e97b', showLabel: true}];
     }
   } else {
@@ -603,7 +560,6 @@ function checkAnswer(userX, userY) {
       placedPoints.push({x: userX, y: userY, color: '#ff6b6b', showLabel: true});
       placedPoints.push({x: targetX, y: targetY, color: '#43e97b', showLabel: true});
     } else {
-      // Показать правильную точку с подписью
       placedPoints = [{x: targetX, y: targetY, color: '#43e97b', showLabel: true}];
     }
   }
@@ -640,15 +596,6 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
     score = 0; streak = 0; questionNum = 1;
     document.getElementById('score').textContent = 0;
     document.getElementById('streak').textContent = 0;
-    newQuestion();
-  });
-});
-
-document.querySelectorAll('.diff-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    range = parseInt(btn.dataset.range);
     newQuestion();
   });
 });
