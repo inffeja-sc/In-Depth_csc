@@ -20,6 +20,128 @@
             justify-content: center;
             align-items: center;
         }
+        /* Кнопка "Вернуться на главную" */
+.home-button {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px 12px 18px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    text-decoration: none;
+    color: #667eea;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 
+        0 8px 24px rgba(102, 126, 234, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    z-index: 1000;
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.home-button:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(102, 126, 234, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+.home-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.home-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.home-button:hover .home-icon {
+    background: white;
+    color: #667eea;
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.home-text {
+    position: relative;
+    z-index: 2;
+}
+
+.home-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.home-button:hover .home-shine {
+    left: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .home-button {
+        top: 15px;
+        left: 15px;
+        padding: 10px 18px 10px 14px;
+        font-size: 14px;
+    }
+    
+    .home-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .home-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-text {
+        display: none;
+    }
+    
+    .home-button {
+        padding: 10px;
+        border-radius: 50%;
+    }
+}
 
         .container {
             background: white;
