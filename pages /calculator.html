@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор систем счисления</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="numeration.html" class="logo">🔢 Системы счисления</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="positional.html">Позиционные СС</a></li>
+                <li><a href="integers.html">Целые числа</a></li>
+                <li><a href="fractions.html">Дробные числа</a></li>
+                <li><a href="periodic.html">Периодические</a></li>
+                <li><a href="mixed.html">Смешанные СС</a></li>
+                <li><a href="fibonacci.html">Фибоначчи</a></li>
+                <li><a href="tasks.html">Задачи</a></li>
+                <li><a href="calculator.html" class="active">Калькулятор</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container content-page">
+        <h1>🧰 Калькулятор систем счисления</h1>
+
+        <p>Введите число, выберите исходную и целевую системы счисления. Поддерживаются основания от 2 до 36.</p>
+
+        <div class="calculator">
+            <div class="calc-form">
+                <div class="form-group">
+                    <label for="numberInput">Число:</label>
+                    <input type="text" id="numberInput" placeholder="Например: 1010, FF, 123.456" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="fromBase">Из системы счисления (основание):</label>
+                    <select id="fromBase">
+                        <option value="2">2 (двоичная)</option>
+                        <option value="3">3 (троичная)</option>
+                        <option value="4">4 (четверичная)</option>
+                        <option value="5">5 (пятеричная)</option>
+                        <option value="6">6 (шестеричная)</option>
+                        <option value="7">7 (семеричная)</option>
+                        <option value="8" selected>8 (восьмеричная)</option>
+                        <option value="9">9 (девятеричная)</option>
+                        <option value="10">10 (десятичная)</option>
+                        <option value="11">11</option>
+                        <option value="12">12 (двенадцатеричная)</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16 (шестнадцатеричная)</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="27">27</option>
+                        <option value="32">32</option>
+                        <option value="36">36</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toBase">В систему счисления (основание):</label>
+                    <select id="toBase">
+                        <option value="2" selected>2 (двоичная)</option>
+                        <option value="3">3 (троичная)</option>
+                        <option value="4">4 (четверичная)</option>
+                        <option value="5">5 (пятеричная)</option>
+                        <option value="6">6 (шестеричная)</option>
+                        <option value="7">7 (семеричная)</option>
+                        <option value="8">8 (восьмеричная)</option>
+                        <option value="9">9 (девятеричная)</option>
+                        <option value="10">10 (десятичная)</option>
+                        <option value="11">11</option>
+                        <option value="12">12 (двенадцатеричная)</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16 (шестнадцатеричная)</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="27">27</option>
+                        <option value="32">32</option>
+                        <option value="36">36</option>
+                    </select>
+                </div>
+
+                <button class="btn" id="calcBtn">🔄 Перевести</button>
+
+                <div class="result-box" id="result">
+                    <div class="label">Результат появится здесь</div>
+                    <div class="value">—</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 60px;">📋 Таблица соответствия цифр</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Десятичная</th>
+                    <th>Двоичная</th>
+                    <th>Восьмеричная</th>
+                    <th>Шестнадцатеричная</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                <tr><td>2</td><td>10</td><td>2</td><td>2</td></tr>
+                <tr><td>3</td><td>11</td><td>3</td><td>3</td></tr>
+                <tr><td>4</td><td>100</td><td>4</td><td>4</td></tr>
+                <tr><td>5</td><td>101</td><td>5</td><td>5</td></tr>
+                <tr><td>6</td><td>110</td><td>6</td><td>6</td></tr>
+                <tr><td>7</td><td>111</td><td>7</td><td>7</td></tr>
+                <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+                <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+                <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+                <tr><td>11</td><td>1011</td><td>13</td><td>B</td></tr>
+                <tr><td>12</td><td>1100</td><td>14</td><td>C</td></tr>
+                <tr><td>13</td><td>1101</td><td>15</td><td>D</td></tr>
+                <tr><td>14</td><td>1110</td><td>16</td><td>E</td></tr>
+                <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+            </tbody>
+        </table>
+
+        <h2>🎯 Быстрые примеры</h2>
+
+        <div class="grid" style="margin-top: 20px;">
+            <div class="topic-card" onclick="quickCalc('1010', 2, 10)">
+                <h3>1010₂ → ?₁₀</h3>
+                <p>Нажмите для перевода</p>
+            </div>
+            <div class="topic-card" onclick="quickCalc('FF', 16, 10)">
+                <h3>FF₁₆ → ?₁₀</h3>
+                <p>Нажмите для перевода</p>
+            </div>
+            <div class="topic-card" onclick="quickCalc('255', 10, 16)">
+                <h3>255₁₀ → ?₁₆</h3>
+                <p>Нажмите для перевода</p>
+            </div>
+            <div class="topic-card" onclick="quickCalc('1234', 8, 2)">
+                <h3>1234₈ → ?₂</h3>
+                <p>Нажмите для перевода</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Учебный курс "Системы счисления"</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        function quickCalc(num, from, to) {
+            document.getElementById('numberInput').value = num;
+            document.getElementById('fromBase').value = from;
+            document.getElementById('toBase').value = to;
+            performCalculation();
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
