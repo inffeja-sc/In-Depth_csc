@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Numerals · Arithmetic</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(145deg, #1a2634 0%, #0c141f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      padding: 16px;
+      margin: 0;
+    }
+
+    .game-card {
+      max-width: 780px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 56px;
+      padding: 30px 26px 38px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      transition: all 0.2s;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-weight: 500;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: #eef3fc;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.7;
+      background: #26384b;
+      padding: 4px 16px;
+      border-radius: 60px;
+      letter-spacing: 0.3px;
+    }
+
+    .lang-selector {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .lang-btn {
+      background: #26384b;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #b6cbe0;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 1px solid #3d536b;
+      letter-spacing: 0.3px;
+    }
+    .lang-btn.active {
+      background: #f6c343;
+      color: #1a2634;
+      border-color: #fad67a;
+      box-shadow: 0 0 12px rgba(246, 195, 67, 0.3);
+    }
+    .lang-btn:hover {
+      background: #3d536b;
+      color: #f0f5ff;
+    }
+    .lang-btn.active:hover {
+      background: #fad05a;
+    }
+
+    .difficulty-panel {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0 24px;
+      flex-wrap: wrap;
+    }
+
+    .difficulty-btn {
+      background: #26384b;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #b6cbe0;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 0 #0f1a26;
+      letter-spacing: 0.5px;
+      flex: 1 1 80px;
+      border: 1px solid #3d536b;
+    }
+    .difficulty-btn.active {
+      background: #f6c343;
+      color: #1a2634;
+      box-shadow: 0 6px 0 #a57d2a;
+      border-color: #fad67a;
+      transform: scale(1.02);
+    }
+    .difficulty-btn:hover {
+      background: #3d536b;
+      color: #f0f5ff;
+    }
+    .difficulty-btn.active:hover {
+      background: #fad05a;
+    }
+
+    .question-box {
+      background: #13202e;
+      border-radius: 48px;
+      padding: 28px 16px 24px;
+      margin: 10px 0 20px;
+      box-shadow: inset 0 8px 12px rgba(0,0,0,0.5), 0 4px 8px rgba(0,0,0,0.3);
+      border: 1px solid #314a60;
+    }
+
+    .question-text {
+      font-size: 2.6rem;
+      font-weight: 600;
+      text-align: center;
+      color: #f0f6ff;
+      letter-spacing: 1.5px;
+      word-break: break-word;
+      line-height: 1.4;
+      min-height: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 12px;
+      flex-wrap: wrap;
+    }
+    .question-text .highlight {
+      background: #f6c343;
+      color: #0f1a26;
+      padding: 0 18px;
+      border-radius: 40px;
+      font-weight: 700;
+      box-shadow: 0 4px 0 #7f641f;
+      display: inline-block;
+      min-width: 60px;
+    }
+    .question-text .op-symbol {
+      color: #b6cbe0;
+      font-weight: 300;
+      margin: 0 4px;
+    }
+    .question-text .eq-symbol {
+      color: #b6cbe0;
+      font-weight: 300;
+    }
+
+    .input-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .answer-input {
+      background: #0c1723;
+      border: 2px solid #2f4a62;
+      border-radius: 60px;
+      padding: 14px 24px;
+      font-size: 1.7rem;
+      width: 180px;
+      text-align: center;
+      color: #f0f6ff;
+      font-weight: 500;
+      outline: none;
+      transition: 0.2s;
+      box-shadow: inset 0 4px 6px rgba(0,0,0,0.6);
+    }
+    .answer-input:focus {
+      border-color: #f6c343;
+      background: #101f2e;
+      box-shadow: 0 0 0 3px rgba(246, 195, 67, 0.3);
+    }
+
+    .action-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 6px 0 4px;
+    }
+
+    .btn {
+      background: #2f4a62;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #eef4fc;
+      cursor: pointer;
+      transition: 0.15s;
+      box-shadow: 0 7px 0 #152433;
+      border: 1px solid #4d6b87;
+      flex: 1 1 120px;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary {
+      background: #f6c343;
+      color: #1f2d3d;
+      box-shadow: 0 7px 0 #9f7d2b;
+      border-color: #fad87a;
+      font-weight: 700;
+    }
+    .btn-primary:hover {
+      background: #fdda5a;
+      transform: scale(1.02);
+    }
+    .btn-primary:active {
+      transform: translateY(4px);
+      box-shadow: 0 3px 0 #9f7d2b;
+    }
+    .btn-secondary {
+      background: #3c5772;
+      box-shadow: 0 7px 0 #1d3142;
+      border-color: #5a7a9a;
+    }
+    .btn-secondary:hover {
+      background: #4d6d8c;
+    }
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 3px 0 #152433;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      transform: translateY(2px);
+      box-shadow: 0 3px 0 #152433;
+      pointer-events: none;
+    }
+
+    .feedback {
+      margin: 20px 0 10px;
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-align: center;
+      min-height: 3.2rem;
+      color: #d3e2f5;
+      padding: 6px 12px;
+      border-radius: 40px;
+      background: #0d1a27;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .feedback .correct {
+      color: #a3e6b0;
+    }
+    .feedback .wrong {
+      color: #f7a7a7;
+    }
+
+    .score-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+      padding: 8px 8px 0;
+      color: #b6cbe0;
+      font-weight: 400;
+      border-top: 1px solid #29415a;
+      padding-top: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .score-badge {
+      background: #1b2d3f;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+    }
+    .score-badge span {
+      font-weight: 700;
+      color: #f6c343;
+      margin: 0 4px;
+    }
+
+    .helper-hint {
+      color: #7f9bb8;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+    }
+
+    @media (max-width: 480px) {
+      .game-card { padding: 20px 14px; }
+      .question-text { font-size: 2.0rem; }
+      .answer-input { width: 150px; font-size: 1.4rem; }
+      .btn { padding: 12px 18px; font-size: 1rem; }
+      .header-row { flex-direction: column; align-items: stretch; }
+      .lang-selector { justify-content: center; }
+      h1 { justify-content: center; font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="game-card">
+  <div class="header-row">
+    <h1>
+      🏛️ Roman·Arithmetic
+      <small id="titleBadge">+, −, ×, ÷</small>
+    </h1>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+      <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+      <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+      <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+    </div>
+  </div>
+
+  <div class="difficulty-panel">
+    <button class="difficulty-btn" data-level="10">I · X</button>
+    <button class="difficulty-btn active" data-level="100">X · C</button>
+    <button class="difficulty-btn" data-level="1000">C · M</button>
+  </div>
+
+  <div class="question-box">
+    <div class="question-text" id="questionDisplay">
+      <span>VIII</span> <span class="op-symbol">+</span> <span class="highlight">?</span> <span class="eq-symbol">=</span> <span>XII</span>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input type="text" class="answer-input" id="answerInput" placeholder="Answer" autocomplete="off" />
+    <div class="action-row">
+      <button class="btn btn-primary" id="checkBtn">Check</button>
+      <button class="btn btn-secondary" id="nextBtn">Next</button>
+    </div>
+  </div>
+
+  <div class="feedback" id="feedback">
+    <span>💡</span> Enter a number or Roman numeral
+  </div>
+
+  <div class="score-area">
+    <div class="score-badge">✅ <span id="correctCount">0</span></div>
+    <div class="score-badge">❌ <span id="wrongCount">0</span></div>
+    <div class="score-badge">📊 <span id="totalCount">0</span></div>
+    <span class="helper-hint" id="helperHint">Roman: I V X L C D M</span>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // ----- MULTILANGUAGE SUPPORT -----
+    const translations = {
+      en: {
+        title: 'Roman·Arithmetic',
+        subtitle: '+, −, ×, ÷',
+        levels: ['I · X', 'X · C', 'C · M'],
+        check: 'Check',
+        next: 'Next',
+        placeholder: 'Answer',
+        feedback: 'Enter a number or Roman numeral',
+        correct: '✅ Correct!',
+        wrong: '❌ Incorrect.',
+        answer: 'Answer',
+        your: 'your',
+        helper: 'Roman: I V X L C D M',
+        alreadyAnswered: 'Already answered, press "Next".',
+        empty: 'Please enter an answer.',
+        levelChanged: 'Level changed · scores reset'
+      },
+      ru: {
+        title: 'Рим·арифметика',
+        subtitle: '+, −, ×, ÷',
+        levels: ['I · X', 'X · C', 'C · M'],
+        check: 'Проверить',
+        next: 'Следующий',
+        placeholder: 'Ответ',
+        feedback: 'Введи число или римскую запись',
+        correct: '✅ Верно!',
+        wrong: '❌ Неверно.',
+        answer: 'Ответ',
+        your: 'твой',
+        helper: 'римские: I V X L C D M',
+        alreadyAnswered: 'Уже отвечено, нажми «Следующий».',
+        empty: 'Введи ответ.',
+        levelChanged: 'Уровень изменён · счёт сброшен'
+      },
+      es: {
+        title: 'Aritmética·Romana',
+        subtitle: '+, −, ×, ÷',
+        levels: ['I · X', 'X · C', 'C · M'],
+        check: 'Comprobar',
+        next: 'Siguiente',
+        placeholder: 'Respuesta',
+        feedback: 'Ingresa un número o numeral romano',
+        correct: '✅ ¡Correcto!',
+        wrong: '❌ Incorrecto.',
+        answer: 'Respuesta',
+        your: 'tu',
+        helper: 'Romanos: I V X L C D M',
+        alreadyAnswered: 'Ya respondido, presiona "Siguiente".',
+        empty: 'Ingresa una respuesta.',
+        levelChanged: 'Nivel cambiado · puntuación reiniciada'
+      },
+      de: {
+        title: 'Römische·Arithmetik',
+        subtitle: '+, −, ×, ÷',
+        levels: ['I · X', 'X · C', 'C · M'],
+        check: 'Prüfen',
+        next: 'Weiter',
+        placeholder: 'Antwort',
+        feedback: 'Gib eine Zahl oder römische Ziffer ein',
+        correct: '✅ Richtig!',
+        wrong: '❌ Falsch.',
+        answer: 'Antwort',
+        your: 'deine',
+        helper: 'Römisch: I V X L C D M',
+        alreadyAnswered: 'Bereits beantwortet, drücke "Weiter".',
+        empty: 'Bitte gib eine Antwort ein.',
+        levelChanged: 'Level geändert · Punktestand zurückgesetzt'
+      }
+    };
+
+    let currentLang = 'en';
+    let currentLevel = 100;
+    let currentQuestion = null;
+    let correctCount = 0;
+    let wrongCount = 0;
+    let totalCount = 0;
+    let isAnswered = false;
+
+    // DOM
+    const questionDisplay = document.getElementById('questionDisplay');
+    const answerInput = document.getElementById('answerInput');
+    const checkBtn = document.getElementById('checkBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const feedback = document.getElementById('feedback');
+    const correctSpan = document.getElementById('correctCount');
+    const wrongSpan = document.getElementById('wrongCount');
+    const totalSpan = document.getElementById('totalCount');
+    const diffBtns = document.querySelectorAll('.difficulty-btn');
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const titleBadge = document.getElementById('titleBadge');
+    const helperHint = document.getElementById('helperHint');
+
+    // ----- ROMAN NUMERALS -----
+    const romanMap = [
+      { value: 1000, symbol: 'M' },
+      { value: 900, symbol: 'CM' },
+      { value: 500, symbol: 'D' },
+      { value: 400, symbol: 'CD' },
+      { value: 100, symbol: 'C' },
+      { value: 90, symbol: 'XC' },
+      { value: 50, symbol: 'L' },
+      { value: 40, symbol: 'XL' },
+      { value: 10, symbol: 'X' },
+      { value: 9, symbol: 'IX' },
+      { value: 5, symbol: 'V' },
+      { value: 4, symbol: 'IV' },
+      { value: 1, symbol: 'I' }
+    ];
+
+    function toRoman(num) {
+      if (num < 1 || num > 3999 || !Number.isInteger(num)) return '?';
+      let result = '';
+      let remaining = num;
+      for (const entry of romanMap) {
+        while (remaining >= entry.value) {
+          result += entry.symbol;
+          remaining -= entry.value;
+        }
+      }
+      return result;
+    }
+
+    function fromRoman(roman) {
+      const str = roman.trim().toUpperCase();
+      if (!/^[IVXLCDM]+$/.test(str)) return NaN;
+      let index = 0;
+      let result = 0;
+      for (const entry of romanMap) {
+        while (str.startsWith(entry.symbol, index)) {
+          result += entry.value;
+          index += entry.symbol.length;
+        }
+      }
+      if (index !== str.length) return NaN;
+      return result;
+    }
+
+    // ----- TRANSLATION HELPERS -----
+    function t(key) {
+      return translations[currentLang][key] || translations.en[key] || key;
+    }
+
+    function updateUI() {
+      checkBtn.textContent = t('check');
+      nextBtn.textContent = t('next');
+      answerInput.placeholder = t('placeholder');
+      helperHint.textContent = t('helper');
+      titleBadge.textContent = t('subtitle');
+      
+      // Update difficulty buttons
+      const levelLabels = t('levels');
+      diffBtns.forEach((btn, idx) => {
+        if (idx < levelLabels.length) {
+          btn.textContent = levelLabels[idx];
+        }
+      });
+
+      // Update feedback if not answered
+      if (!isAnswered && currentQuestion) {
+        feedback.innerHTML = `<span>💡</span> ${t('feedback')}`;
+      }
+    }
+
+    // ----- GENERATE QUESTION -----
+    function generateQuestion(level) {
+      const maxVal = level;
+      const minVal = Math.max(1, Math.floor(level / 20));
+
+      const ops = ['+', '-', '×', '÷'];
+      const op = ops[Math.floor(Math.random() * ops.length)];
+
+      let a, b, result;
+      let attempts = 0;
+      const maxAttempts = 300;
+      let valid = false;
+
+      while (!valid && attempts < maxAttempts) {
+        attempts++;
+        
+        if (op === '+') {
+          a = randInt(minVal, maxVal);
+          b = randInt(minVal, Math.min(maxVal, maxVal - a));
+          result = a + b;
+        } 
+        else if (op === '-') {
+          a = randInt(minVal, maxVal);
+          b = randInt(minVal, Math.min(maxVal, a - 1));
+          if (a - b < 1) continue;
+          result = a - b;
+        } 
+        else if (op === '×') {
+          a = randInt(minVal, Math.min(maxVal, Math.floor(maxVal / 2) + 1));
+          const maxB = Math.min(maxVal, Math.floor(maxVal / a));
+          if (maxB < minVal) continue;
+          b = randInt(minVal, maxB);
+          result = a * b;
+        } 
+        else if (op === '÷') {
+          b = randInt(minVal, Math.min(maxVal, Math.floor(maxVal / 2) + 1));
+          const maxResult = Math.floor(maxVal / b);
+          if (maxResult < minVal) continue;
+          const r = randInt(minVal, maxResult);
+          a = r * b;
+          result = r;
+          if (a > maxVal || a < minVal) continue;
+        }
+
+        if (a >= 1 && a <= maxVal && b >= 1 && b <= maxVal && result >= 1 && result <= maxVal) {
+          valid = true;
+        }
+      }
+
+      if (!valid) {
+        a = randInt(minVal, Math.min(maxVal, 10));
+        b = randInt(minVal, Math.min(maxVal, 10));
+        result = a + b;
+        if (result > maxVal) { 
+          a = Math.floor(maxVal/2); 
+          b = Math.floor(maxVal/2); 
+          result = a + b; 
+        }
+      }
+
+      const missingIdx = Math.floor(Math.random() * 3);
+      let answer;
+
+      const aRoman = toRoman(a);
+      const bRoman = toRoman(b);
+      const resultRoman = toRoman(result);
+
+      let leftPart, rightPart;
+      if (missingIdx === 0) {
+        answer = String(a);
+        leftPart = `<span class="highlight">?</span> <span class="op-symbol">${op}</span> <span>${bRoman}</span>`;
+        rightPart = `<span class="eq-symbol">=</span> <span>${resultRoman}</span>`;
+      } else if (missingIdx === 1) {
+        answer = String(b);
+        leftPart = `<span>${aRoman}</span> <span class="op-symbol">${op}</span> <span class="highlight">?</span>`;
+        rightPart = `<span class="eq-symbol">=</span> <span>${resultRoman}</span>`;
+      } else {
+        answer = String(result);
+        leftPart = `<span>${aRoman}</span> <span class="op-symbol">${op}</span> <span>${bRoman}</span>`;
+        rightPart = `<span class="eq-symbol">=</span> <span class="highlight">?</span>`;
+      }
+
+      const display = `${leftPart} ${rightPart}`;
+
+      return {
+        display: display,
+        answer: answer,
+        a: a, b: b, result: result,
+        op: op,
+        aRoman, bRoman, resultRoman
+      };
+    }
+
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updateQuestion() {
+      currentQuestion = generateQuestion(currentLevel);
+      questionDisplay.innerHTML = currentQuestion.display;
+      answerInput.value = '';
+      answerInput.focus();
+      isAnswered = false;
+      feedback.innerHTML = `<span>💡</span> ${t('feedback')}`;
+      feedback.className = 'feedback';
+    }
+
+    // ----- CHECK ANSWER -----
+    function handleCheck() {
+      if (isAnswered) {
+        feedback.innerHTML = `<span>⏳</span> ${t('alreadyAnswered')}`;
+        return;
+      }
+      if (!currentQuestion) {
+        updateQuestion();
+        return;
+      }
+
+      const userRaw = answerInput.value.trim();
+      if (userRaw === '') {
+        feedback.innerHTML = `<span>⚠️</span> ${t('empty')}`;
+        feedback.className = 'feedback';
+        return;
+      }
+
+      const expected = currentQuestion.answer;
+      const expectedNum = parseInt(expected, 10);
+
+      let userNum = NaN;
+      let userRoman = null;
+
+      const asNumber = Number(userRaw);
+      if (!isNaN(asNumber) && Number.isInteger(asNumber) && asNumber > 0) {
+        userNum = asNumber;
+      }
+
+      const asRoman = fromRoman(userRaw);
+      if (!isNaN(asRoman) && asRoman > 0) {
+        userRoman = asRoman;
+      }
+
+      let isCorrect = false;
+      let userDisplay = userRaw;
+
+      if (!isNaN(expectedNum)) {
+        if (userNum === expectedNum) {
+          isCorrect = true;
+          userDisplay = String(userNum);
+        } else if (userRoman === expectedNum) {
+          isCorrect = true;
+          userDisplay = toRoman(expectedNum);
+        }
+        if (!isCorrect && userRoman === expectedNum) {
+          isCorrect = true;
+          userDisplay = toRoman(expectedNum);
+        }
+      } else {
+        if (userRaw.toUpperCase() === expected.toUpperCase()) {
+          isCorrect = true;
+          userDisplay = expected;
+        }
+      }
+
+      if (!isCorrect && !isNaN(expectedNum) && userRoman === expectedNum) {
+        isCorrect = true;
+        userDisplay = toRoman(expectedNum);
+      }
+
+      totalCount++;
+      if (isCorrect) {
+        correctCount++;
+        feedback.innerHTML = `<span class="correct">${t('correct')}</span>  ${t('answer')}: <strong>${expected}</strong>`;
+        feedback.className = 'feedback correct';
+      } else {
+        wrongCount++;
+        const expectedDisplay = !isNaN(expectedNum) ? expected : expected;
+        feedback.innerHTML = `<span class="wrong">${t('wrong')}</span>  ${t('answer')}: <strong>${expectedDisplay}</strong> (${t('your')}: ${userDisplay})`;
+        feedback.className = 'feedback wrong';
+      }
+
+      isAnswered = true;
+      updateScoreDisplay();
+    }
+
+    function updateScoreDisplay() {
+      correctSpan.textContent = correctCount;
+      wrongSpan.textContent = wrongCount;
+      totalSpan.textContent = totalCount;
+    }
+
+    function resetStats() {
+      correctCount = 0;
+      wrongCount = 0;
+      totalCount = 0;
+      updateScoreDisplay();
+    }
+
+    function setLevel(level) {
+      if (currentLevel === level) return;
+      currentLevel = level;
+      diffBtns.forEach(btn => {
+        const val = parseInt(btn.dataset.level, 10);
+        btn.classList.toggle('active', val === level);
+      });
+      resetStats();
+      updateQuestion();
+      feedback.innerHTML = `<span>⚡</span> ${t('levelChanged')}`;
+      feedback.className = 'feedback';
+    }
+
+    function setLanguage(lang) {
+      if (currentLang === lang) return;
+      currentLang = lang;
+      langBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      updateUI();
+      if (!isAnswered) {
+        feedback.innerHTML = `<span>💡</span> ${t('feedback')}`;
+      }
+      // Update level buttons text
+      const levelLabels = t('levels');
+      diffBtns.forEach((btn, idx) => {
+        if (idx < levelLabels.length) {
+          btn.textContent = levelLabels[idx];
+        }
+      });
+    }
+
+    // ----- INIT -----
+    function init() {
+      // Language buttons
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          setLanguage(this.dataset.lang);
+        });
+      });
+
+      // Difficulty buttons
+      diffBtns.forEach(btn => {
+        const val = parseInt(btn.dataset.level, 10);
+        btn.classList.toggle('active', val === currentLevel);
+        btn.addEventListener('click', function() {
+          const level = parseInt(this.dataset.level, 10);
+          setLevel(level);
+        });
+      });
+
+      updateUI();
+      updateQuestion();
+
+      checkBtn.addEventListener('click', handleCheck);
+      nextBtn.addEventListener('click', function() {
+        updateQuestion();
+      });
+
+      answerInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (!isAnswered) {
+            handleCheck();
+          } else {
+            updateQuestion();
+          }
+        }
+      });
+
+      answerInput.focus();
+    }
+
+    init();
+  })();
+</script>
+</body>
+</html>
