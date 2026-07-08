@@ -484,10 +484,87 @@
     .switchers { gap: 10px; }
     .lang-btn { padding: 8px 12px; font-size: 0.85rem; }
   }
+ /* ===== Плавающая кнопка "Домой" ===== */
+.home-fab {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  pointer-events: none;
+}
+
+/* Появляется после прокрутки */
+.home-fab.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.home-fab:hover {
+  background: linear-gradient(135deg, #ff6b9d, #c44dff);
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(196, 77, 255, 0.5);
+}
+
+.home-fab:active {
+  transform: translateY(-2px) scale(1);
+}
+
+.home-icon {
+  font-size: 1.3rem;
+  transition: transform 0.3s;
+}
+
+.home-fab:hover .home-icon {
+  transform: rotate(-15deg) scale(1.2);
+  animation: houseBounce 0.6s;
+}
+
+@keyframes houseBounce {
+  0%, 100% { transform: rotate(-15deg) scale(1.2) translateY(0); }
+  50% { transform: rotate(-15deg) scale(1.2) translateY(-4px); }
+}
+
+.home-label {
+  letter-spacing: 0.5px;
+}
+
+/* Адаптив: на мобильных только иконка */
+@media (max-width: 600px) {
+  .home-fab {
+    padding: 14px;
+    left: 16px;
+    bottom: 16px;
+  }
+  .home-label { display: none; }
+  .home-icon { font-size: 1.5rem; }
+}
 </style>
 </head>
 <body>
-
+<!-- Плавающая кнопка "Домой" -->
+<a href="index.html" class="home-fab" id="homeFab" title="Вернуться на главную">
+  <span class="home-icon">🏠</span>
+  <span class="home-label">Домой</span>
+</a>
 <div id="confetti-container"></div>
 
 <div class="trainer-container">
@@ -1390,6 +1467,19 @@ function applyI18n() {
 
 applyI18n();
 loadLevel();
+ // Показывать кнопку "Домой" после прокрутки
+const homeFab = document.getElementById('homeFab');
+if (homeFab) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 150) {
+      homeFab.classList.add('visible');
+    } else {
+      homeFab.classList.remove('visible');
+    }
+  });
+  // Сразу показать, если страница уже прокручена (например, при обновлении)
+  if (window.scrollY > 150) homeFab.classList.add('visible');
+}
 </script>
 
 </body>
