@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <link rel="icon" type="image/png" href="favicon.png">
-    <title>Games with Meaning · Computer Science</title>
+    <title>Игры со смыслом · Информатика</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
@@ -87,33 +87,6 @@
             color: #f6c343;
             text-decoration: none;
             letter-spacing: 0.5px;
-        }
-
-        .navbar .logo span {
-            color: #aad0f5;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: #b6cbe0;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 6px 16px;
-            border-radius: 40px;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: #f6c343;
-            color: #0f1a2b;
         }
 
         .lang-switcher {
@@ -314,31 +287,6 @@
         .card-roman .card-icon { color: #f6c343; }
 
         /* ----- FOOTER ----- */
-        .back-link {
-            margin-top: 48px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .back-link a {
-            color: #aac3dd;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 12px 32px;
-            border-radius: 60px;
-            background: rgba(20, 35, 55, 0.6);
-            border: 1px solid #2f4863;
-            transition: 0.2s;
-            display: inline-block;
-        }
-
-        .back-link a:hover {
-            background: #f6c343;
-            color: #0f1a2b;
-            border-color: #fad67a;
-        }
-
         footer {
             margin-top: 40px;
             padding: 20px 0;
@@ -359,9 +307,6 @@
                 padding: 16px 20px;
                 border-radius: 32px;
             }
-            .nav-links {
-                justify-content: center;
-            }
             .page-header h1 {
                 font-size: 2.2rem;
             }
@@ -377,10 +322,6 @@
             .navbar .logo {
                 font-size: 1.2rem;
                 text-align: center;
-            }
-            .nav-links a {
-                font-size: 0.85rem;
-                padding: 4px 12px;
             }
             .lang-btn {
                 font-size: 0.6rem;
@@ -412,25 +353,20 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="index.html" class="logo">🎓 <span>Learn</span>·Play</a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#sections" class="active">Games</a>
-            <a href="index.html#about">About</a>
-            <div class="lang-switcher">
-                <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
-                <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
-                <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
-                <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
-            </div>
+        <a href="index.html" class="logo">🎓 Учи играючи !</a>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="ru">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+            <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
         </div>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
-        <div class="badge">🎯 Interactive Learning</div>
-        <h1>Games with <span class="highlight">Meaning</span></h1>
-        <p>Learn Computer Science through play — pick a game and start your adventure!</p>
+        <div class="badge">🎯 Интерактивное обучение</div>
+        <h1>Игры со <span class="highlight">смыслом</span></h1>
+        <p>Изучай информатику через игру — выбирай игру и начинай приключение!</p>
     </div>
 
     <!-- Games Grid -->
@@ -440,43 +376,38 @@
         <a href="game/morze_en.html" class="game-card card-morse">
             <div class="card-bg-emoji">📡</div>
             <span class="card-icon">📡</span>
-            <h3>Morse Code</h3>
-            <p>Learn the Morse alphabet with interactive exercises. Translate letters, numbers, and even whole words!</p>
+            <h3>Азбука Морзе</h3>
+            <p>Изучай азбуку Морзе с интерактивными упражнениями. Переводи буквы, цифры и даже целые слова!</p>
             <div class="tags">
-                <span class="tag highlight-tag">🎯 Training</span>
-                <span class="tag">🔤 Letters</span>
-                <span class="tag">🔢 Numbers</span>
+                <span class="tag highlight-tag">🎯 Тренажёр</span>
+                <span class="tag">🔤 Буквы</span>
+                <span class="tag">🔢 Цифры</span>
             </div>
-            <div class="play-btn">▶ Play Now</div>
+            <div class="play-btn">▶ Играть</div>
         </a>
 
         <!-- GAME 2: ROMAN ARITHMETIC -->
         <a href="game/rim_ch.html" class="game-card card-roman">
             <div class="card-bg-emoji">🏛️</div>
             <span class="card-icon">🏛️</span>
-            <h3>Roman Arithmetic</h3>
-            <p>Solve arithmetic problems with Roman numerals. Practice addition, subtraction, multiplication and division in a fun way!</p>
+            <h3>Римская арифметика</h3>
+            <p>Решай арифметические задачи с римскими цифрами. Тренируй сложение, вычитание, умножение и деление в увлекательной форме!</p>
             <div class="tags">
-                <span class="tag highlight-tag">🧮 Math</span>
+                <span class="tag highlight-tag">🧮 Математика</span>
                 <span class="tag">➕ − × ÷</span>
-                <span class="tag">🏛️ Roman</span>
+                <span class="tag">🏛️ Римские</span>
             </div>
-            <div class="play-btn">▶ Play Now</div>
+            <div class="play-btn">▶ Играть</div>
         </a>
 
         <!-- You can add more games here later -->
 
     </div>
 
-    <!-- Back link -->
-    <div class="back-link">
-        <a href="index.html#sections">← Back to all sections</a>
-    </div>
-
     <!-- Footer -->
     <footer>
-        <div>© 2026 · Computer Science Learning Platform</div>
-        <div style="font-size:0.8rem; color:#4a6887; margin-top:4px;">Made with ❤️ for students</div>
+        <div>© 2026 · Учебная платформа по информатике</div>
+        <div style="font-size:0.8rem; color:#4a6887; margin-top:4px;">Сделано с ❤️ для учеников</div>
     </footer>
 
 </div>
@@ -485,11 +416,27 @@
     // ----- SIMPLE LANGUAGE SWITCHER (demo) -----
     const langBtns = document.querySelectorAll('.lang-btn');
     const texts = {
+        ru: {
+            logo: '🎓 Учи играючи',
+            badge: '🎯 Интерактивное обучение',
+            title: 'Игры со <span class="highlight">смыслом</span>',
+            subtitle: 'Изучай информатику через игру — выбирай игру и начинай приключение!',
+            morseTitle: 'Азбука Морзе',
+            morseDesc: 'Изучай азбуку Морзе с интерактивными упражнениями. Переводи буквы, цифры и даже целые слова!',
+            morseTag1: '🎯 Тренажёр',
+            morseTag2: '🔤 Буквы',
+            morseTag3: '🔢 Цифры',
+            romanTitle: 'Римская арифметика',
+            romanDesc: 'Решай арифметические задачи с римскими цифрами. Тренируй сложение, вычитание, умножение и деление в увлекательной форме!',
+            romanTag1: '🧮 Математика',
+            romanTag2: '➕ − × ÷',
+            romanTag3: '🏛️ Римские',
+            play: '▶ Играть',
+            footer: 'Учебная платформа по информатике',
+            footerLove: 'Сделано с ❤️ для учеников'
+        },
         en: {
-            logo: '🎓 Learn·Play',
-            home: 'Home',
-            games: 'Games',
-            about: 'About',
+            logo: '🎓 Learn by playing',
             badge: '🎯 Interactive Learning',
             title: 'Games with <span class="highlight">Meaning</span>',
             subtitle: 'Learn Computer Science through play — pick a game and start your adventure!',
@@ -504,38 +451,11 @@
             romanTag2: '➕ − × ÷',
             romanTag3: '🏛️ Roman',
             play: '▶ Play Now',
-            back: '← Back to all sections',
             footer: 'Computer Science Learning Platform',
             footerLove: 'Made with ❤️ for students'
         },
-        ru: {
-            logo: '🎓 Учи играючи',
-            home: 'Главная',
-            games: 'Игры',
-            about: 'О нас',
-            badge: '🎯 Интерактивное обучение',
-            title: 'Игры со <span class="highlight">смыслом</span>',
-            subtitle: 'Изучай информатику через игру — выбирай игру и начинай приключение!',
-            morseTitle: 'Азбука Морзе',
-            morseDesc: 'Изучай азбуку Морзе с интерактивными упражнениями. Переводи буквы, цифры и даже целые слова!',
-            morseTag1: '🎯 Тренажёр',
-            morseTag2: '🔤 Буквы',
-            morseTag3: '🔢 Цифры',
-            romanTitle: 'Римская арифметика',
-            romanDesc: 'Решай арифметические задачи с римскими цифрами. Тренируй сложение, вычитание, умножение и деление!',
-            romanTag1: '🧮 Математика',
-            romanTag2: '➕ − × ÷',
-            romanTag3: '🏛️ Римские',
-            play: '▶ Играть',
-            back: '← Назад к разделам',
-            footer: 'Учебная платформа по информатике',
-            footerLove: 'Сделано с ❤️ для учеников'
-        },
         de: {
-            logo: '🎓 Lerne·Spiele',
-            home: 'Startseite',
-            games: 'Spiele',
-            about: 'Über uns',
+            logo: '🎓 Lerne spielend',
             badge: '🎯 Interaktives Lernen',
             title: 'Spiele mit <span class="highlight">Sinn</span>',
             subtitle: 'Lerne Informatik durch Spielen — wähle ein Spiel und starte dein Abenteuer!',
@@ -550,15 +470,11 @@
             romanTag2: '➕ − × ÷',
             romanTag3: '🏛️ Römisch',
             play: '▶ Spielen',
-            back: '← Zurück zu den Sektionen',
             footer: 'Informatik-Lernplattform',
             footerLove: 'Mit ❤️ für Schüler gemacht'
         },
         es: {
-            logo: '🎓 Aprende·Jugando',
-            home: 'Inicio',
-            games: 'Juegos',
-            about: 'Sobre nosotros',
+            logo: '🎓 Aprende jugando',
             badge: '🎯 Aprendizaje interactivo',
             title: 'Juegos con <span class="highlight">Sentido</span>',
             subtitle: 'Aprende informática jugando — elige un juego y comienza tu aventura!',
@@ -573,13 +489,12 @@
             romanTag2: '➕ − × ÷',
             romanTag3: '🏛️ Romanos',
             play: '▶ Jugar',
-            back: '← Volver a las secciones',
             footer: 'Plataforma de aprendizaje de informática',
             footerLove: 'Hecho con ❤️ para estudiantes'
         }
     };
 
-    let currentLang = 'en';
+    let currentLang = 'ru';
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -592,14 +507,6 @@
 
         // Update logo
         document.querySelector('.navbar .logo').innerHTML = t.logo;
-
-        // Update nav links
-        const navLinks = document.querySelectorAll('.nav-links a');
-        if (navLinks.length >= 3) {
-            navLinks[0].textContent = t.home;
-            navLinks[1].textContent = t.games;
-            navLinks[2].textContent = t.about;
-        }
 
         // Update header
         document.querySelector('.page-header .badge').textContent = t.badge;
@@ -633,9 +540,6 @@
             }
             roman.querySelector('.play-btn').textContent = t.play;
         }
-
-        // Back link
-        document.querySelector('.back-link a').textContent = t.back;
 
         // Footer
         const footer = document.querySelector('footer');
