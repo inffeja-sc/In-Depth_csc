@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roman Numerals · Arithmetic</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Римская арифметика · Информатика</title>
+<style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -33,6 +33,32 @@
       box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.02);
       transition: all 0.2s;
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #2f4a62;
+      border: 1px solid #4d6b87;
+      padding: 8px 18px;
+      border-radius: 40px;
+      color: #eef4fc;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      box-shadow: 0 5px 0 #152433;
+      z-index: 10;
+    }
+    .back-btn:hover {
+      background: #3d5a75;
+      transform: translateX(-3px);
+    }
+    .back-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #152433;
     }
 
     .header-row {
@@ -42,6 +68,7 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 6px;
+      padding-left: 110px;
     }
 
     h1 {
@@ -325,498 +352,290 @@
       .question-text { font-size: 2.0rem; }
       .answer-input { width: 150px; font-size: 1.4rem; }
       .btn { padding: 12px 18px; font-size: 1rem; }
-      .header-row { flex-direction: column; align-items: stretch; }
+      .header-row { flex-direction: column; align-items: stretch; padding-left: 0; padding-top: 50px; }
       .lang-selector { justify-content: center; }
       h1 { justify-content: center; font-size: 1.6rem; }
+      .back-btn { position: static; display: inline-block; margin-bottom: 10px; }
     }
   </style>
 </head>
 <body>
+
 <div class="game-card">
-  <div class="header-row">
-    <h1>
-      🏛️ Roman·Arithmetic
-      <small id="titleBadge">+, −, ×, ÷</small>
-    </h1>
-    <div class="lang-selector">
-      <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
-      <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
-      <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
-      <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+    <a href="../game_menu.html" class="back-btn" id="backBtn">← В меню</a>
+
+    <div class="header-row">
+      <h1 id="pageTitle">🏛️ Римская·Арифметика <small id="pageSubtitle">+, −, ×, ÷</small></h1>
+      <div class="lang-selector">
+        <button class="lang-btn active" data-lang="ru">🇷🇺 RU</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+        <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+      </div>
     </div>
-  </div>
 
-  <div class="difficulty-panel">
-    <button class="difficulty-btn" data-level="10">I · X</button>
-    <button class="difficulty-btn active" data-level="100">X · C</button>
-    <button class="difficulty-btn" data-level="1000">C · M</button>
-  </div>
-
-  <div class="question-box">
-    <div class="question-text" id="questionDisplay">
-      <span>VIII</span> <span class="op-symbol">+</span> <span class="highlight">?</span> <span class="eq-symbol">=</span> <span>XII</span>
+    <div class="difficulty-panel">
+      <button class="difficulty-btn active" data-diff="easy">I · X</button>
+      <button class="difficulty-btn" data-diff="medium">X · C</button>
+      <button class="difficulty-btn" data-diff="hard">C · M</button>
     </div>
-  </div>
 
-  <div class="input-area">
-    <input type="text" class="answer-input" id="answerInput" placeholder="Answer" autocomplete="off" />
-    <div class="action-row">
-      <button class="btn btn-primary" id="checkBtn">Check</button>
-      <button class="btn btn-secondary" id="nextBtn">Next</button>
+    <div class="question-box">
+      <div class="question-text" id="questionText">
+        <span>VIII</span>
+        <span class="op-symbol">+</span>
+        <span class="highlight">?</span>
+        <span class="eq-symbol">=</span>
+        <span>XII</span>
+      </div>
+      <div class="input-area">
+        <input type="text" class="answer-input" id="answerInput" placeholder="IV">
+        <div class="action-row">
+          <button class="btn btn-primary" id="checkBtn">Проверить</button>
+          <button class="btn btn-secondary" id="nextBtn">Следующий</button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="feedback" id="feedback">
-    <span>💡</span> Enter a number or Roman numeral
-  </div>
+    <div class="feedback" id="feedback"></div>
 
-  <div class="score-area">
-    <div class="score-badge">✅ <span id="correctCount">0</span></div>
-    <div class="score-badge">❌ <span id="wrongCount">0</span></div>
-    <div class="score-badge">📊 <span id="totalCount">0</span></div>
-    <span class="helper-hint" id="helperHint">Roman: I V X L C D M</span>
-  </div>
+    <div class="score-area">
+      <div class="score-badge" id="correctLabel">✅ Верно: <span id="correctCount">0</span></div>
+      <div class="score-badge" id="wrongLabel">❌ Ошибки: <span id="wrongCount">0</span></div>
+      <div class="score-badge" id="totalLabel">📊 Всего: <span id="totalCount">0</span></div>
+    </div>
+
+    <div class="helper-hint" id="helperHint">💡 Введите число или римскую цифру</div>
 </div>
 
 <script>
-  (function() {
-    // ----- MULTILANGUAGE SUPPORT -----
+    // === ПЕРЕВОДЫ ===
     const translations = {
-      en: {
-        title: 'Roman·Arithmetic',
-        subtitle: '+, −, ×, ÷',
-        levels: ['I · X', 'X · C', 'C · M'],
-        check: 'Check',
-        next: 'Next',
-        placeholder: 'Answer',
-        feedback: 'Enter a number or Roman numeral',
-        correct: '✅ Correct!',
-        wrong: '❌ Incorrect.',
-        answer: 'Answer',
-        your: 'your',
-        helper: 'Roman: I V X L C D M',
-        alreadyAnswered: 'Already answered, press "Next".',
-        empty: 'Please enter an answer.',
-        levelChanged: 'Level changed · scores reset'
-      },
-      ru: {
-        title: 'Рим·арифметика',
-        subtitle: '+, −, ×, ÷',
-        levels: ['I · X', 'X · C', 'C · M'],
-        check: 'Проверить',
-        next: 'Следующий',
-        placeholder: 'Ответ',
-        feedback: 'Введи число или римскую запись',
-        correct: '✅ Верно!',
-        wrong: '❌ Неверно.',
-        answer: 'Ответ',
-        your: 'твой',
-        helper: 'римские: I V X L C D M',
-        alreadyAnswered: 'Уже отвечено, нажми «Следующий».',
-        empty: 'Введи ответ.',
-        levelChanged: 'Уровень изменён · счёт сброшен'
-      },
-      es: {
-        title: 'Aritmética·Romana',
-        subtitle: '+, −, ×, ÷',
-        levels: ['I · X', 'X · C', 'C · M'],
-        check: 'Comprobar',
-        next: 'Siguiente',
-        placeholder: 'Respuesta',
-        feedback: 'Ingresa un número o numeral romano',
-        correct: '✅ ¡Correcto!',
-        wrong: '❌ Incorrecto.',
-        answer: 'Respuesta',
-        your: 'tu',
-        helper: 'Romanos: I V X L C D M',
-        alreadyAnswered: 'Ya respondido, presiona "Siguiente".',
-        empty: 'Ingresa una respuesta.',
-        levelChanged: 'Nivel cambiado · puntuación reiniciada'
-      },
-      de: {
-        title: 'Römische·Arithmetik',
-        subtitle: '+, −, ×, ÷',
-        levels: ['I · X', 'X · C', 'C · M'],
-        check: 'Prüfen',
-        next: 'Weiter',
-        placeholder: 'Antwort',
-        feedback: 'Gib eine Zahl oder römische Ziffer ein',
-        correct: '✅ Richtig!',
-        wrong: '❌ Falsch.',
-        answer: 'Antwort',
-        your: 'deine',
-        helper: 'Römisch: I V X L C D M',
-        alreadyAnswered: 'Bereits beantwortet, drücke "Weiter".',
-        empty: 'Bitte gib eine Antwort ein.',
-        levelChanged: 'Level geändert · Punktestand zurückgesetzt'
-      }
+        ru: {
+            pageTitle: '🏛️ Римская·Арифметика',
+            pageSubtitle: '+, −, ×, ÷',
+            checkBtn: 'Проверить',
+            nextBtn: 'Следующий',
+            backBtn: '← В меню',
+            correctMsg: '✅ Верно!',
+            wrongMsg: '❌ Правильно:',
+            correctLabel: '✅ Верно:',
+            wrongLabel: '❌ Ошибки:',
+            totalLabel: '📊 Всего:',
+            helperHint: '💡 Введите число или римскую цифру',
+            easy: 'I · X',
+            medium: 'X · C',
+            hard: 'C · M'
+        },
+        en: {
+            pageTitle: '🏛️ Roman·Arithmetic',
+            pageSubtitle: '+, −, ×, ÷',
+            checkBtn: 'Check',
+            nextBtn: 'Next',
+            backBtn: '← Menu',
+            correctMsg: '✅ Correct!',
+            wrongMsg: '❌ Correct:',
+            correctLabel: '✅ Correct:',
+            wrongLabel: '❌ Wrong:',
+            totalLabel: '📊 Total:',
+            helperHint: '💡 Enter a number or Roman numeral',
+            easy: 'I · X',
+            medium: 'X · C',
+            hard: 'C · M'
+        },
+        es: {
+            pageTitle: '🏛️ Aritmética·Romana',
+            pageSubtitle: '+, −, ×, ÷',
+            checkBtn: 'Comprobar',
+            nextBtn: 'Siguiente',
+            backBtn: '← Menú',
+            correctMsg: '✅ ¡Correcto!',
+            wrongMsg: '❌ Correcto:',
+            correctLabel: '✅ Correcto:',
+            wrongLabel: '❌ Errores:',
+            totalLabel: '📊 Total:',
+            helperHint: '💡 Ingresa un número o numeral romano',
+            easy: 'I · X',
+            medium: 'X · C',
+            hard: 'C · M'
+        },
+        de: {
+            pageTitle: '🏛️ Römische·Arithmetik',
+            pageSubtitle: '+, −, ×, ÷',
+            checkBtn: 'Prüfen',
+            nextBtn: 'Nächste',
+            backBtn: '← Menü',
+            correctMsg: '✅ Richtig!',
+            wrongMsg: '❌ Richtig:',
+            correctLabel: '✅ Richtig:',
+            wrongLabel: '❌ Falsch:',
+            totalLabel: '📊 Gesamt:',
+            helperHint: '💡 Gib eine Zahl oder römische Ziffer ein',
+            easy: 'I · X',
+            medium: 'X · C',
+            hard: 'C · M'
+        }
     };
 
-    let currentLang = 'en';
-    let currentLevel = 100;
-    let currentQuestion = null;
+    let currentLang = 'ru';
+
+    // === СОСТОЯНИЕ ИГРЫ ===
     let correctCount = 0;
     let wrongCount = 0;
     let totalCount = 0;
-    let isAnswered = false;
+    let currentAnswer = '';
+    let currentDifficulty = 'easy';
 
-    // DOM
-    const questionDisplay = document.getElementById('questionDisplay');
-    const answerInput = document.getElementById('answerInput');
-    const checkBtn = document.getElementById('checkBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const feedback = document.getElementById('feedback');
-    const correctSpan = document.getElementById('correctCount');
-    const wrongSpan = document.getElementById('wrongCount');
-    const totalSpan = document.getElementById('totalCount');
-    const diffBtns = document.querySelectorAll('.difficulty-btn');
-    const langBtns = document.querySelectorAll('.lang-btn');
-    const titleBadge = document.getElementById('titleBadge');
-    const helperHint = document.getElementById('helperHint');
-
-    // ----- ROMAN NUMERALS -----
-    const romanMap = [
-      { value: 1000, symbol: 'M' },
-      { value: 900, symbol: 'CM' },
-      { value: 500, symbol: 'D' },
-      { value: 400, symbol: 'CD' },
-      { value: 100, symbol: 'C' },
-      { value: 90, symbol: 'XC' },
-      { value: 50, symbol: 'L' },
-      { value: 40, symbol: 'XL' },
-      { value: 10, symbol: 'X' },
-      { value: 9, symbol: 'IX' },
-      { value: 5, symbol: 'V' },
-      { value: 4, symbol: 'IV' },
-      { value: 1, symbol: 'I' }
-    ];
+    // === РИМСКИЕ ЦИФРЫ ===
+    const romanNumerals = {
+        M: 1000, CM: 900, D: 500, CD: 400,
+        C: 100, XC: 90, L: 50, XL: 40,
+        X: 10, IX: 9, V: 5, IV: 4, I: 1
+    };
 
     function toRoman(num) {
-      if (num < 1 || num > 3999 || !Number.isInteger(num)) return '?';
-      let result = '';
-      let remaining = num;
-      for (const entry of romanMap) {
-        while (remaining >= entry.value) {
-          result += entry.symbol;
-          remaining -= entry.value;
+        let result = '';
+        for (let [key, value] of Object.entries(romanNumerals)) {
+            while (num >= value) {
+                result += key;
+                num -= value;
+            }
         }
-      }
-      return result;
+        return result;
     }
 
-    function fromRoman(roman) {
-      const str = roman.trim().toUpperCase();
-      if (!/^[IVXLCDM]+$/.test(str)) return NaN;
-      let index = 0;
-      let result = 0;
-      for (const entry of romanMap) {
-        while (str.startsWith(entry.symbol, index)) {
-          result += entry.value;
-          index += entry.symbol.length;
+    function fromRoman(str) {
+        let result = 0;
+        for (let [key, value] of Object.entries(romanNumerals)) {
+            while (str.startsWith(key)) {
+                result += value;
+                str = str.slice(key.length);
+            }
         }
-      }
-      if (index !== str.length) return NaN;
-      return result;
+        return result;
     }
 
-    // ----- TRANSLATION HELPERS -----
-    function t(key) {
-      return translations[currentLang][key] || translations.en[key] || key;
-    }
+    // === ГЕНЕРАЦИЯ ВОПРОСА ===
+    function generateQuestion() {
+        const ranges = {
+            easy: [1, 10],
+            medium: [10, 100],
+            hard: [100, 1000]
+        };
+        const [min, max] = ranges[currentDifficulty];
 
-    function updateUI() {
-      checkBtn.textContent = t('check');
-      nextBtn.textContent = t('next');
-      answerInput.placeholder = t('placeholder');
-      helperHint.textContent = t('helper');
-      titleBadge.textContent = t('subtitle');
-      
-      // Update difficulty buttons
-      const levelLabels = t('levels');
-      diffBtns.forEach((btn, idx) => {
-        if (idx < levelLabels.length) {
-          btn.textContent = levelLabels[idx];
-        }
-      });
+        const a = Math.floor(Math.random() * (max - min + 1)) + min;
+        const b = Math.floor(Math.random() * (max - min + 1)) + min;
+        const ops = ['+', '−', '×', '÷'];
+        const op = ops[Math.floor(Math.random() * ops.length)];
 
-      // Update feedback if not answered
-      if (!isAnswered && currentQuestion) {
-        feedback.innerHTML = `<span>💡</span> ${t('feedback')}`;
-      }
-    }
-
-    // ----- GENERATE QUESTION -----
-    function generateQuestion(level) {
-      const maxVal = level;
-      const minVal = Math.max(1, Math.floor(level / 20));
-
-      const ops = ['+', '-', '×', '÷'];
-      const op = ops[Math.floor(Math.random() * ops.length)];
-
-      let a, b, result;
-      let attempts = 0;
-      const maxAttempts = 300;
-      let valid = false;
-
-      while (!valid && attempts < maxAttempts) {
-        attempts++;
-        
-        if (op === '+') {
-          a = randInt(minVal, maxVal);
-          b = randInt(minVal, Math.min(maxVal, maxVal - a));
-          result = a + b;
-        } 
-        else if (op === '-') {
-          a = randInt(minVal, maxVal);
-          b = randInt(minVal, Math.min(maxVal, a - 1));
-          if (a - b < 1) continue;
-          result = a - b;
-        } 
-        else if (op === '×') {
-          a = randInt(minVal, Math.min(maxVal, Math.floor(maxVal / 2) + 1));
-          const maxB = Math.min(maxVal, Math.floor(maxVal / a));
-          if (maxB < minVal) continue;
-          b = randInt(minVal, maxB);
-          result = a * b;
-        } 
-        else if (op === '÷') {
-          b = randInt(minVal, Math.min(maxVal, Math.floor(maxVal / 2) + 1));
-          const maxResult = Math.floor(maxVal / b);
-          if (maxResult < minVal) continue;
-          const r = randInt(minVal, maxResult);
-          a = r * b;
-          result = r;
-          if (a > maxVal || a < minVal) continue;
+        let answer;
+        switch(op) {
+            case '+': answer = a + b; break;
+            case '−': answer = Math.abs(a - b); break;
+            case '×': answer = a * b; break;
+            case '÷': answer = Math.floor(a / b); break;
         }
 
-        if (a >= 1 && a <= maxVal && b >= 1 && b <= maxVal && result >= 1 && result <= maxVal) {
-          valid = true;
+        currentAnswer = answer.toString();
+
+        const questionText = document.getElementById('questionText');
+        questionText.innerHTML = `
+            <span>${toRoman(a)}</span>
+            <span class="op-symbol">${op}</span>
+            <span class="highlight">?</span>
+            <span class="eq-symbol">=</span>
+            <span>${toRoman(op === '÷' ? a : (op === '−' ? Math.max(a, b) : a))}</span>
+        `;
+
+        document.getElementById('answerInput').value = '';
+        document.getElementById('feedback').textContent = '';
+        document.getElementById('answerInput').focus();
+    }
+
+    // === ПРОВЕРКА ОТВЕТА ===
+    function checkAnswer() {
+        const input = document.getElementById('answerInput').value.trim();
+        const feedback = document.getElementById('feedback');
+        const t = translations[currentLang];
+
+        let userAnswer;
+        if (/^\d+$/.test(input)) {
+            userAnswer = input;
+        } else if (/^[MDCLXVI]+$/.test(input.toUpperCase())) {
+            userAnswer = fromRoman(input.toUpperCase()).toString();
+        } else {
+            feedback.innerHTML = `<span class="wrong">❌ Неверный формат</span>`;
+            return;
         }
-      }
 
-      if (!valid) {
-        a = randInt(minVal, Math.min(maxVal, 10));
-        b = randInt(minVal, Math.min(maxVal, 10));
-        result = a + b;
-        if (result > maxVal) { 
-          a = Math.floor(maxVal/2); 
-          b = Math.floor(maxVal/2); 
-          result = a + b; 
+        totalCount++;
+        if (userAnswer === currentAnswer) {
+            correctCount++;
+            feedback.innerHTML = `<span class="correct">${t.correctMsg}</span>`;
+        } else {
+            wrongCount++;
+            feedback.innerHTML = `<span class="wrong">${t.wrongMsg} ${toRoman(parseInt(currentAnswer))}</span>`;
         }
-      }
 
-      const missingIdx = Math.floor(Math.random() * 3);
-      let answer;
-
-      const aRoman = toRoman(a);
-      const bRoman = toRoman(b);
-      const resultRoman = toRoman(result);
-
-      let leftPart, rightPart;
-      if (missingIdx === 0) {
-        answer = String(a);
-        leftPart = `<span class="highlight">?</span> <span class="op-symbol">${op}</span> <span>${bRoman}</span>`;
-        rightPart = `<span class="eq-symbol">=</span> <span>${resultRoman}</span>`;
-      } else if (missingIdx === 1) {
-        answer = String(b);
-        leftPart = `<span>${aRoman}</span> <span class="op-symbol">${op}</span> <span class="highlight">?</span>`;
-        rightPart = `<span class="eq-symbol">=</span> <span>${resultRoman}</span>`;
-      } else {
-        answer = String(result);
-        leftPart = `<span>${aRoman}</span> <span class="op-symbol">${op}</span> <span>${bRoman}</span>`;
-        rightPart = `<span class="eq-symbol">=</span> <span class="highlight">?</span>`;
-      }
-
-      const display = `${leftPart} ${rightPart}`;
-
-      return {
-        display: display,
-        answer: answer,
-        a: a, b: b, result: result,
-        op: op,
-        aRoman, bRoman, resultRoman
-      };
+        document.getElementById('correctCount').textContent = correctCount;
+        document.getElementById('wrongCount').textContent = wrongCount;
+        document.getElementById('totalCount').textContent = totalCount;
     }
 
-    function randInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    // === ПРИМЕНЕНИЕ ПЕРЕВОДА ===
+    function applyTranslation() {
+        const t = translations[currentLang];
+        document.getElementById('pageTitle').innerHTML = `${t.pageTitle} <small id="pageSubtitle">${t.pageSubtitle}</small>`;
+        document.getElementById('checkBtn').textContent = t.checkBtn;
+        document.getElementById('nextBtn').textContent = t.nextBtn;
+        document.getElementById('backBtn').textContent = t.backBtn;
+        document.getElementById('correctLabel').innerHTML = `${t.correctLabel} <span id="correctCount">${correctCount}</span>`;
+        document.getElementById('wrongLabel').innerHTML = `${t.wrongLabel} <span id="wrongCount">${wrongCount}</span>`;
+        document.getElementById('totalLabel').innerHTML = `${t.totalLabel} <span id="totalCount">${totalCount}</span>`;
+        document.getElementById('helperHint').textContent = t.helperHint;
+        document.documentElement.lang = currentLang;
+        document.title = t.pageTitle.replace('🏛️ ', '') + ' · Информатика';
 
-    function updateQuestion() {
-      currentQuestion = generateQuestion(currentLevel);
-      questionDisplay.innerHTML = currentQuestion.display;
-      answerInput.value = '';
-      answerInput.focus();
-      isAnswered = false;
-      feedback.innerHTML = `<span>💡</span> ${t('feedback')}`;
-      feedback.className = 'feedback';
-    }
-
-    // ----- CHECK ANSWER -----
-    function handleCheck() {
-      if (isAnswered) {
-        feedback.innerHTML = `<span>⏳</span> ${t('alreadyAnswered')}`;
-        return;
-      }
-      if (!currentQuestion) {
-        updateQuestion();
-        return;
-      }
-
-      const userRaw = answerInput.value.trim();
-      if (userRaw === '') {
-        feedback.innerHTML = `<span>⚠️</span> ${t('empty')}`;
-        feedback.className = 'feedback';
-        return;
-      }
-
-      const expected = currentQuestion.answer;
-      const expectedNum = parseInt(expected, 10);
-
-      let userNum = NaN;
-      let userRoman = null;
-
-      const asNumber = Number(userRaw);
-      if (!isNaN(asNumber) && Number.isInteger(asNumber) && asNumber > 0) {
-        userNum = asNumber;
-      }
-
-      const asRoman = fromRoman(userRaw);
-      if (!isNaN(asRoman) && asRoman > 0) {
-        userRoman = asRoman;
-      }
-
-      let isCorrect = false;
-      let userDisplay = userRaw;
-
-      if (!isNaN(expectedNum)) {
-        if (userNum === expectedNum) {
-          isCorrect = true;
-          userDisplay = String(userNum);
-        } else if (userRoman === expectedNum) {
-          isCorrect = true;
-          userDisplay = toRoman(expectedNum);
-        }
-        if (!isCorrect && userRoman === expectedNum) {
-          isCorrect = true;
-          userDisplay = toRoman(expectedNum);
-        }
-      } else {
-        if (userRaw.toUpperCase() === expected.toUpperCase()) {
-          isCorrect = true;
-          userDisplay = expected;
-        }
-      }
-
-      if (!isCorrect && !isNaN(expectedNum) && userRoman === expectedNum) {
-        isCorrect = true;
-        userDisplay = toRoman(expectedNum);
-      }
-
-      totalCount++;
-      if (isCorrect) {
-        correctCount++;
-        feedback.innerHTML = `<span class="correct">${t('correct')}</span>  ${t('answer')}: <strong>${expected}</strong>`;
-        feedback.className = 'feedback correct';
-      } else {
-        wrongCount++;
-        const expectedDisplay = !isNaN(expectedNum) ? expected : expected;
-        feedback.innerHTML = `<span class="wrong">${t('wrong')}</span>  ${t('answer')}: <strong>${expectedDisplay}</strong> (${t('your')}: ${userDisplay})`;
-        feedback.className = 'feedback wrong';
-      }
-
-      isAnswered = true;
-      updateScoreDisplay();
-    }
-
-    function updateScoreDisplay() {
-      correctSpan.textContent = correctCount;
-      wrongSpan.textContent = wrongCount;
-      totalSpan.textContent = totalCount;
-    }
-
-    function resetStats() {
-      correctCount = 0;
-      wrongCount = 0;
-      totalCount = 0;
-      updateScoreDisplay();
-    }
-
-    function setLevel(level) {
-      if (currentLevel === level) return;
-      currentLevel = level;
-      diffBtns.forEach(btn => {
-        const val = parseInt(btn.dataset.level, 10);
-        btn.classList.toggle('active', val === level);
-      });
-      resetStats();
-      updateQuestion();
-      feedback.innerHTML = `<span>⚡</span> ${t('levelChanged')}`;
-      feedback.className = 'feedback';
-    }
-
-    function setLanguage(lang) {
-      if (currentLang === lang) return;
-      currentLang = lang;
-      langBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-      updateUI();
-      if (!isAnswered) {
-        feedback.innerHTML = `<span>💡</span> ${t('feedback')}`;
-      }
-      // Update level buttons text
-      const levelLabels = t('levels');
-      diffBtns.forEach((btn, idx) => {
-        if (idx < levelLabels.length) {
-          btn.textContent = levelLabels[idx];
-        }
-      });
-    }
-
-    // ----- INIT -----
-    function init() {
-      // Language buttons
-      langBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          setLanguage(this.dataset.lang);
+        document.querySelectorAll('.lang-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.lang === currentLang);
         });
-      });
 
-      // Difficulty buttons
-      diffBtns.forEach(btn => {
-        const val = parseInt(btn.dataset.level, 10);
-        btn.classList.toggle('active', val === currentLevel);
-        btn.addEventListener('click', function() {
-          const level = parseInt(this.dataset.level, 10);
-          setLevel(level);
-        });
-      });
-
-      updateUI();
-      updateQuestion();
-
-      checkBtn.addEventListener('click', handleCheck);
-      nextBtn.addEventListener('click', function() {
-        updateQuestion();
-      });
-
-      answerInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          if (!isAnswered) {
-            handleCheck();
-          } else {
-            updateQuestion();
-          }
+        const feedback = document.getElementById('feedback');
+        if (feedback.dataset.state === 'correct') {
+            feedback.innerHTML = `<span class="correct">${t.correctMsg}</span>`;
+        } else if (feedback.dataset.state === 'wrong') {
+            feedback.innerHTML = `<span class="wrong">${t.wrongMsg} ${toRoman(parseInt(currentAnswer))}</span>`;
         }
-      });
-
-      answerInput.focus();
     }
 
-    init();
-  })();
+    // === СОБЫТИЯ ===
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentLang = btn.dataset.lang;
+            applyTranslation();
+        });
+    });
+
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentDifficulty = btn.dataset.diff;
+            generateQuestion();
+        });
+    });
+
+    document.getElementById('checkBtn').onclick = checkAnswer;
+    document.getElementById('nextBtn').onclick = generateQuestion;
+    document.getElementById('answerInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') checkAnswer();
+    });
+
+    // === СТАРТ ===
+    applyTranslation();
+    generateQuestion();
 </script>
+
 </body>
 </html>
