@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системы счисления · Информатика</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-light: #e8f0fe;
+            --success: #28a745;
+            --danger: #dc3545;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .lang-switch {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .setting-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .setting-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .radio-group label, .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        select, input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .game-area {
+            text-align: center;
+        }
+
+        .problem-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            letter-spacing: 2px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .problem-display sub {
+            font-size: 0.6em;
+            color: var(--primary);
+            font-weight: normal;
+        }
+
+        .input-area {
+            margin: 20px 0;
+        }
+
+        #answer-input {
+            width: 200px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #check-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        #next-btn {
+            background-color: #e9ecef;
+            color: var(--text);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .feedback {
+            font-size: 1.1rem;
+            font-weight: bold;
+            min-height: 24px;
+            margin-top: 10px;
+        }
+
+        .correct { color: var(--success); }
+        .wrong { color: var(--danger); }
+
+        /* Анимация для неверного/верного ответа */
+        .shake {
+            animation: shake 0.4s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .pulse {
+            animation: pulse 0.4s;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="../game_menu.html" class="back-btn">← В меню</a>
+    <h1>💻 Системы·Счисления +, −, ×, ÷</h1>
+    <div class="lang-switch">🇷🇺 RU 🇬🇧 EN 🇪🇸 ES 🇩🇪 DE</div>
+
+    <!-- Настройки -->
+    <div class="card">
+        <div class="settings-grid">
+            <div class="setting-group">
+                <label>Режим систем счисления:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="mode" value="same" checked> Одна общая</label>
+                    <label><input type="radio" name="mode" value="diff"> Разные</label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>База 1 (для аргументов):</label>
+                <select id="base1">
+                    <!-- Заполняется JS -->
+                </select>
+            </div>
+
+            <div class="setting-group" id="base2-group" style="display: none;">
+                <label>База 2 (для ответа):</label>
+                <select id="base2">
+                    <!-- Заполняется JS -->
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label>Операции:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" class="op-check" value="+" checked> +</label>
+                    <label><input type="checkbox" class="op-check" value="-" checked> −</label>
+                    <label><input type="checkbox" class="op-check" value="*"> ×</label>
+                    <label><input type="checkbox" class="op-check" value="/"> ÷</label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Сложность:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="diff" value="1" checked> Легко (до 15)</label>
+                    <label><input type="radio" name="diff" value="2"> Средне (до 63)</label>
+                    <label><input type="radio" name="diff" value="3"> Сложно (до 255)</label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Что ищем?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="unknown" value="op1" checked> 1-й аргумент</label>
+                    <label><input type="radio" name="unknown" value="op2"> 2-й аргумент</label>
+                    <label><input type="radio" name="unknown" value="res"> Результат</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Игровая область -->
+    <div class="card game-area">
+        <div class="problem-display" id="problem-display">
+            Настройте параметры и нажмите "Следующий"
+        </div>
+        
+        <div class="input-area">
+            <input type="text" id="answer-input" placeholder="💡 Введите ответ" autocomplete="off">
+        </div>
+
+        <div class="buttons">
+            <button id="check-btn">Проверить</button>
+            <button id="next-btn">Следующий</button>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="stats">
+            <span>✅ Верно: <b id="stat-correct">0</b></span>
+            <span>❌ Ошибки: <b id="stat-errors">0</b></span>
+            <span>📊 Всего: <b id="stat-total">0</b></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Инициализация выпадающих списков базисов
+    const base1Select = document.getElementById('base1');
+    const base2Select = document.getElementById('base2');
+    const base2Group = document.getElementById('base2-group');
+
+    for (let i = 2; i <= 16; i++) {
+        base1Select.add(new Option(i, i));
+        base2Select.add(new Option(i, i));
+    }
+    base1Select.value = 2;
+    base2Select.value = 10;
+
+    // Переключение режима "Разные системы"
+    document.querySelectorAll('input[name="mode"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            base2Group.style.display = e.target.value === 'diff' ? 'flex' : 'none';
+        });
+    });
+
+    // Состояние игры
+    let stats = { correct: 0, errors: 0, total: 0 };
+    let currentAnswer = '';
+    let isAnswerChecked = false;
+
+    // Элементы DOM
+    const problemDisplay = document.getElementById('problem-display');
+    const answerInput = document.getElementById('answer-input');
+    const checkBtn = document.getElementById('check-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const feedback = document.getElementById('feedback');
+
+    // Утилиты
+    const getSubscript = (num) => {
+        const subscripts = '₀₁₂₃₄₅₆₇₈₉';
+        return String(num).split('').map(d => subscripts[parseInt(d)]).join('');
+    };
+
+    const toDecimal = (str, base) => parseInt(str, base);
+    const fromDecimal = (num, base) => num.toString(base).toUpperCase();
+
+    const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+    // Генерация задачи
+    function generateProblem() {
+        const mode = document.querySelector('input[name="mode"]:checked').value;
+        const base1 = parseInt(base1Select.value);
+        const base2 = mode === 'diff' ? parseInt(base2Select.value) : base1;
+        
+        const operations = [];
+        document.querySelectorAll('.op-check:checked').forEach(cb => operations.push(cb.value));
+        if (operations.length === 0) {
+            alert('Выберите хотя бы одну операцию!');
+            return;
+        }
+
+        const diff = parseInt(document.querySelector('input[name="diff"]:checked').value);
+        const maxVal = diff === 1 ? 15 : (diff === 2 ? 63 : 255);
+        
+        const unknownType = document.querySelector('input[name="unknown"]:checked').value;
+        const op = operations[randInt(0, operations.length - 1)];
+
+        let num1, num2, result;
+
+        // Генерация чисел в зависимости от операции (чтобы избежать отрицательных и дробных)
+        if (op === '+') {
+            num1 = randInt(1, maxVal);
+            num2 = randInt(1, maxVal - num1);
+            result = num1 + num2;
+        } else if (op === '-') {
+            result = randInt(0, maxVal);
+            num2 = randInt(0, maxVal - result);
+            num1 = result + num2;
+        } else if (op === '*') {
+            let limit = Math.floor(Math.sqrt(maxVal));
+            num1 = randInt(1, limit);
+            num2 = randInt(1, Math.floor(maxVal / num1));
+            result = num1 * num2;
+        } else if (op === '/') {
+            num2 = randInt(1, Math.floor(Math.sqrt(maxVal)));
+            result = randInt(1, Math.floor(maxVal / num2));
+            num1 = num2 * result;
+        }
+
+        // Перевод в нужные системы счисления
+        const str1 = fromDecimal(num1, base1);
+        const str2 = fromDecimal(num2, base1); // Аргументы всегда в base1
+        const strRes = fromDecimal(result, base2); // Ответ в base2
+
+        let displayStr = '';
+        
+        if (unknownType === 'op1') {
+            currentAnswer = str1;
+            displayStr = `<span>?${getSubscript(base1)}</span> ${op} <span>${str2}${getSubscript(base1)}</span> = <span>${strRes}${getSubscript(base2)}</span>`;
+        } else if (unknownType === 'op2') {
+            currentAnswer = str2;
+            displayStr = `<span>${str1}${getSubscript(base1)}</span> ${op} <span>?${getSubscript(base1)}</span> = <span>${strRes}${getSubscript(base2)}</span>`;
+        } else {
+            currentAnswer = strRes;
+            displayStr = `<span>${str1}${getSubscript(base1)}</span> ${op} <span>${str2}${getSubscript(base1)}</span> = <span>?${getSubscript(base2)}</span>`;
+        }
+
+        problemDisplay.innerHTML = displayStr;
+        answerInput.value = '';
+        answerInput.focus();
+        feedback.textContent = '';
+        feedback.className = 'feedback';
+        isAnswerChecked = false;
+    }
+
+    // Проверка ответа
+    function checkAnswer() {
+        if (isAnswerChecked) return;
+        
+        const userAns = answerInput.value.trim().toUpperCase();
+        if (!userAns) return;
+
+        stats.total++;
+        
+        if (userAns === currentAnswer) {
+            stats.correct++;
+            feedback.textContent = '✅ Верно! Отличная работа!';
+            feedback.className = 'feedback correct';
+            answerInput.classList.add('pulse');
+            setTimeout(() => answerInput.classList.remove('pulse'), 400);
+        } else {
+            stats.errors++;
+            feedback.textContent = `❌ Ошибка. Правильный ответ: ${currentAnswer}`;
+            feedback.className = 'feedback wrong';
+            answerInput.classList.add('shake');
+            setTimeout(() => answerInput.classList.remove('shake'), 400);
+        }
+
+        isAnswerChecked = true;
+        updateStats();
+    }
+
+    function updateStats() {
+        document.getElementById('stat-correct').textContent = stats.correct;
+        document.getElementById('stat-errors').textContent = stats.errors;
+        document.getElementById('stat-total').textContent = stats.total;
+    }
+
+    // Обработчики событий
+    checkBtn.addEventListener('click', checkAnswer);
+    nextBtn.addEventListener('click', generateProblem);
+    
+    answerInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            if (!isAnswerChecked) checkAnswer();
+            else generateProblem();
+        }
+    });
+
+    // Запуск при загрузке
+    generateProblem();
+</script>
+
+</body>
+</html>
