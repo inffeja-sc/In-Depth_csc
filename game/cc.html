@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Системы счисления · Информатика</title>
+     <link rel="icon" type="image/png" href="../favicon.png"> 
+    <title data-i18n="title">Системы счисления · Информатика</title>
     <style>
         :root {
             --primary: #4a6fa5;
@@ -52,6 +53,24 @@
             color: var(--text-light);
             margin-bottom: 25px;
             letter-spacing: 2px;
+        }
+
+        .lang-switch span {
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            user-select: none;
+        }
+
+        .lang-switch span:hover {
+            background-color: #e0e7ff;
+        }
+
+        .lang-switch span.active {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: bold;
         }
 
         .card {
@@ -193,7 +212,6 @@
         .correct { color: var(--success); }
         .wrong { color: var(--danger); }
 
-        /* Анимация для неверного/верного ответа */
         .shake {
             animation: shake 0.4s;
         }
@@ -216,37 +234,39 @@
 <body>
 
 <div class="container">
-    <a href="../game_menu.html" class="back-btn">← В меню</a>
-    <h1>💻 Системы·Счисления +, −, ×, ÷</h1>
-    <div class="lang-switch">🇷🇺 RU 🇬🇧 EN 🇪🇸 ES 🇩🇪 DE</div>
+    <a href="../game_menu.html" class="back-btn" data-i18n="back_menu">← В меню</a>
+    <h1 data-i18n="header">💻 Системы·Счисления +, −, ×, ÷</h1>
+    
+    <div class="lang-switch">
+        <span data-lang="ru" class="active" title="Русский">🇷🇺 RU</span>
+        <span data-lang="en" title="English">🇬🇧 EN</span>
+        <span data-lang="es" title="Español">🇪🇸 ES</span>
+        <span data-lang="de" title="Deutsch">🇩🇪 DE</span>
+    </div>
 
     <!-- Настройки -->
     <div class="card">
         <div class="settings-grid">
             <div class="setting-group">
-                <label>Режим систем счисления:</label>
+                <label data-i18n="mode_label">Режим систем счисления:</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="mode" value="same" checked> Одна общая</label>
-                    <label><input type="radio" name="mode" value="diff"> Разные</label>
+                    <label><input type="radio" name="mode" value="same" checked> <span data-i18n="mode_same">Одна общая</span></label>
+                    <label><input type="radio" name="mode" value="diff"> <span data-i18n="mode_diff">Разные</span></label>
                 </div>
             </div>
 
             <div class="setting-group">
-                <label>База 1 (для аргументов):</label>
-                <select id="base1">
-                    <!-- Заполняется JS -->
-                </select>
+                <label data-i18n="base1">База 1 (для аргументов):</label>
+                <select id="base1"></select>
             </div>
 
             <div class="setting-group" id="base2-group" style="display: none;">
-                <label>База 2 (для ответа):</label>
-                <select id="base2">
-                    <!-- Заполняется JS -->
-                </select>
+                <label data-i18n="base2">База 2 (для ответа):</label>
+                <select id="base2"></select>
             </div>
 
             <div class="setting-group">
-                <label>Операции:</label>
+                <label data-i18n="ops">Операции:</label>
                 <div class="checkbox-group">
                     <label><input type="checkbox" class="op-check" value="+" checked> +</label>
                     <label><input type="checkbox" class="op-check" value="-" checked> −</label>
@@ -256,20 +276,20 @@
             </div>
 
             <div class="setting-group">
-                <label>Сложность:</label>
+                <label data-i18n="diff">Сложность:</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="diff" value="1" checked> Легко (до 15)</label>
-                    <label><input type="radio" name="diff" value="2"> Средне (до 63)</label>
-                    <label><input type="radio" name="diff" value="3"> Сложно (до 255)</label>
+                    <label><input type="radio" name="diff" value="1" checked> <span data-i18n="diff_1">Легко (до 15)</span></label>
+                    <label><input type="radio" name="diff" value="2"> <span data-i18n="diff_2">Средне (до 63)</span></label>
+                    <label><input type="radio" name="diff" value="3"> <span data-i18n="diff_3">Сложно (до 255)</span></label>
                 </div>
             </div>
 
             <div class="setting-group">
-                <label>Что ищем?</label>
+                <label data-i18n="unknown">Что ищем?</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="unknown" value="op1" checked> 1-й аргумент</label>
-                    <label><input type="radio" name="unknown" value="op2"> 2-й аргумент</label>
-                    <label><input type="radio" name="unknown" value="res"> Результат</label>
+                    <label><input type="radio" name="unknown" value="op1" checked> <span data-i18n="unk_op1">1-й аргумент</span></label>
+                    <label><input type="radio" name="unknown" value="op2"> <span data-i18n="unk_op2">2-й аргумент</span></label>
+                    <label><input type="radio" name="unknown" value="res"> <span data-i18n="unk_res">Результат</span></label>
                 </div>
             </div>
         </div>
@@ -277,30 +297,181 @@
 
     <!-- Игровая область -->
     <div class="card game-area">
-        <div class="problem-display" id="problem-display">
+        <div class="problem-display" id="problem-display" data-i18n="default_problem">
             Настройте параметры и нажмите "Следующий"
         </div>
         
         <div class="input-area">
-            <input type="text" id="answer-input" placeholder="💡 Введите ответ" autocomplete="off">
+            <input type="text" id="answer-input" data-i18n-placeholder="placeholder" placeholder="💡 Введите ответ" autocomplete="off">
         </div>
 
         <div class="buttons">
-            <button id="check-btn">Проверить</button>
-            <button id="next-btn">Следующий</button>
+            <button id="check-btn" data-i18n="btn_check">Проверить</button>
+            <button id="next-btn" data-i18n="btn_next">Следующий</button>
         </div>
 
         <div class="feedback" id="feedback"></div>
 
         <div class="stats">
-            <span>✅ Верно: <b id="stat-correct">0</b></span>
-            <span>❌ Ошибки: <b id="stat-errors">0</b></span>
-            <span>📊 Всего: <b id="stat-total">0</b></span>
+            <span><span data-i18n="stat_correct">✅ Верно:</span> <b id="stat-correct">0</b></span>
+            <span><span data-i18n="stat_errors">❌ Ошибки:</span> <b id="stat-errors">0</b></span>
+            <span><span data-i18n="stat_total">📊 Всего:</span> <b id="stat-total">0</b></span>
         </div>
     </div>
 </div>
 
 <script>
+    // Словарь переводов
+    const translations = {
+        ru: {
+            title: "Системы счисления · Информатика",
+            back_menu: "← В меню",
+            header: "💻 Системы·Счисления +, −, ×, ÷",
+            mode_label: "Режим систем счисления:",
+            mode_same: "Одна общая",
+            mode_diff: "Разные",
+            base1: "База 1 (для аргументов):",
+            base2: "База 2 (для ответа):",
+            ops: "Операции:",
+            diff: "Сложность:",
+            diff_1: "Легко (до 15)",
+            diff_2: "Средне (до 63)",
+            diff_3: "Сложно (до 255)",
+            unknown: "Что ищем?",
+            unk_op1: "1-й аргумент",
+            unk_op2: "2-й аргумент",
+            unk_res: "Результат",
+            placeholder: "💡 Введите ответ",
+            default_problem: "Настройте параметры и нажмите \"Следующий\"",
+            btn_check: "Проверить",
+            btn_next: "Следующий",
+            stat_correct: "✅ Верно:",
+            stat_errors: "❌ Ошибки:",
+            stat_total: "📊 Всего:",
+            alert_ops: "Выберите хотя бы одну операцию!",
+            feedback_correct: "✅ Верно! Отличная работа!",
+            feedback_wrong: "❌ Ошибка. Правильный ответ: "
+        },
+        en: {
+            title: "Numeral Systems · Computer Science",
+            back_menu: "← To Menu",
+            header: "💻 Numeral Systems +, −, ×, ÷",
+            mode_label: "Numeral system mode:",
+            mode_same: "One common",
+            mode_diff: "Different",
+            base1: "Base 1 (for arguments):",
+            base2: "Base 2 (for answer):",
+            ops: "Operations:",
+            diff: "Difficulty:",
+            diff_1: "Easy (up to 15)",
+            diff_2: "Medium (up to 63)",
+            diff_3: "Hard (up to 255)",
+            unknown: "What are we looking for?",
+            unk_op1: "1st argument",
+            unk_op2: "2nd argument",
+            unk_res: "Result",
+            placeholder: "💡 Enter answer",
+            default_problem: "Set parameters and press \"Next\"",
+            btn_check: "Check",
+            btn_next: "Next",
+            stat_correct: "✅ Correct:",
+            stat_errors: "❌ Errors:",
+            stat_total: "📊 Total:",
+            alert_ops: "Select at least one operation!",
+            feedback_correct: "✅ Correct! Great job!",
+            feedback_wrong: "❌ Error. Correct answer: "
+        },
+        es: {
+            title: "Sistemas de numeración · Informática",
+            back_menu: "← Al menú",
+            header: "💻 Sistemas de numeración +, −, ×, ÷",
+            mode_label: "Modo de sistemas:",
+            mode_same: "Uno común",
+            mode_diff: "Diferentes",
+            base1: "Base 1 (para argumentos):",
+            base2: "Base 2 (para respuesta):",
+            ops: "Operaciones:",
+            diff: "Dificultad:",
+            diff_1: "Fácil (hasta 15)",
+            diff_2: "Medio (hasta 63)",
+            diff_3: "Difícil (hasta 255)",
+            unknown: "¿Qué buscamos?",
+            unk_op1: "1er argumento",
+            unk_op2: "2do argumento",
+            unk_res: "Resultado",
+            placeholder: "💡 Introduce respuesta",
+            default_problem: "Configura parámetros y pulsa \"Siguiente\"",
+            btn_check: "Comprobar",
+            btn_next: "Siguiente",
+            stat_correct: "✅ Correcto:",
+            stat_errors: "❌ Errores:",
+            stat_total: "📊 Total:",
+            alert_ops: "¡Selecciona al menos una operación!",
+            feedback_correct: "✅ ¡Correcto! ¡Buen trabajo!",
+            feedback_wrong: "❌ Error. Respuesta correcta: "
+        },
+        de: {
+            title: "Zahlensysteme · Informatik",
+            back_menu: "← Zum Menü",
+            header: "💻 Zahlensysteme +, −, ×, ÷",
+            mode_label: "Zahlensystem-Modus:",
+            mode_same: "Ein gemeinsames",
+            mode_diff: "Verschiedene",
+            base1: "Basis 1 (für Argumente):",
+            base2: "Basis 2 (für Antwort):",
+            ops: "Operationen:",
+            diff: "Schwierigkeit:",
+            diff_1: "Leicht (bis 15)",
+            diff_2: "Mittel (bis 63)",
+            diff_3: "Schwer (bis 255)",
+            unknown: "Was suchen wir?",
+            unk_op1: "1. Argument",
+            unk_op2: "2. Argument",
+            unk_res: "Ergebnis",
+            placeholder: "💡 Antwort eingeben",
+            default_problem: "Parameter einstellen und \"Weiter\" drücken",
+            btn_check: "Prüfen",
+            btn_next: "Weiter",
+            stat_correct: "✅ Richtig:",
+            stat_errors: "❌ Fehler:",
+            stat_total: "📊 Gesamt:",
+            alert_ops: "Wähle mindestens eine Operation!",
+            feedback_correct: "✅ Richtig! Gut gemacht!",
+            feedback_wrong: "❌ Fehler. Richtige Antwort: "
+        }
+    };
+
+    let currentLang = localStorage.getItem('cc_lang') || 'ru';
+
+    // Функция применения языка
+    function setLanguage(lang) {
+        if (!translations[lang]) lang = 'ru';
+        currentLang = lang;
+        localStorage.setItem('cc_lang', lang);
+        document.documentElement.lang = lang;
+
+        // Обновляем текстовое содержимое
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+
+        // Обновляем placeholder у input
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang][key]) {
+                el.placeholder = translations[lang][key];
+            }
+        });
+
+        // Подсвечиваем активный язык
+        document.querySelectorAll('.lang-switch span').forEach(span => {
+            span.classList.toggle('active', span.getAttribute('data-lang') === lang);
+        });
+    }
+
     // Инициализация выпадающих списков базисов
     const base1Select = document.getElementById('base1');
     const base2Select = document.getElementById('base2');
@@ -338,10 +509,8 @@
         return String(num).split('').map(d => subscripts[parseInt(d)]).join('');
     };
 
-    const toDecimal = (str, base) => parseInt(str, base);
-    const fromDecimal = (num, base) => num.toString(base).toUpperCase();
-
     const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const fromDecimal = (num, base) => num.toString(base).toUpperCase();
 
     // Генерация задачи
     function generateProblem() {
@@ -352,7 +521,7 @@
         const operations = [];
         document.querySelectorAll('.op-check:checked').forEach(cb => operations.push(cb.value));
         if (operations.length === 0) {
-            alert('Выберите хотя бы одну операцию!');
+            alert(translations[currentLang].alert_ops);
             return;
         }
 
@@ -364,7 +533,6 @@
 
         let num1, num2, result;
 
-        // Генерация чисел в зависимости от операции (чтобы избежать отрицательных и дробных)
         if (op === '+') {
             num1 = randInt(1, maxVal);
             num2 = randInt(1, maxVal - num1);
@@ -384,10 +552,9 @@
             num1 = num2 * result;
         }
 
-        // Перевод в нужные системы счисления
         const str1 = fromDecimal(num1, base1);
-        const str2 = fromDecimal(num2, base1); // Аргументы всегда в base1
-        const strRes = fromDecimal(result, base2); // Ответ в base2
+        const str2 = fromDecimal(num2, base1);
+        const strRes = fromDecimal(result, base2);
 
         let displayStr = '';
         
@@ -421,13 +588,13 @@
         
         if (userAns === currentAnswer) {
             stats.correct++;
-            feedback.textContent = '✅ Верно! Отличная работа!';
+            feedback.textContent = translations[currentLang].feedback_correct;
             feedback.className = 'feedback correct';
             answerInput.classList.add('pulse');
             setTimeout(() => answerInput.classList.remove('pulse'), 400);
         } else {
             stats.errors++;
-            feedback.textContent = `❌ Ошибка. Правильный ответ: ${currentAnswer}`;
+            feedback.textContent = translations[currentLang].feedback_wrong + currentAnswer;
             feedback.className = 'feedback wrong';
             answerInput.classList.add('shake');
             setTimeout(() => answerInput.classList.remove('shake'), 400);
@@ -454,7 +621,15 @@
         }
     });
 
+    // Обработчики переключения языка
+    document.querySelectorAll('.lang-switch span').forEach(span => {
+        span.addEventListener('click', () => {
+            setLanguage(span.getAttribute('data-lang'));
+        });
+    });
+
     // Запуск при загрузке
+    setLanguage(currentLang);
     generateProblem();
 </script>
 
